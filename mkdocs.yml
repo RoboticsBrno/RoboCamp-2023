@@ -50,6 +50,8 @@ markdown_extensions:
   - pymdownx.keys
   - attr_list
   - pymdownx.tabbed
+  - pymdownx.snippets:
+      url_download: True
   - pymdownx.tasklist:
       custom_checkbox: true
   - toc:
