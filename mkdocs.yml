@@ -21,6 +21,8 @@ theme:
     - navigation.tabs
     - navigation.indexes
     - navigation.top
+    - content.code.copy
+    - content.code.annotate
 
   # custom_dir: overrides
 
@@ -56,6 +58,9 @@ markdown_extensions:
       custom_checkbox: true
   - toc:
       permalink: "¤"
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
     - search
