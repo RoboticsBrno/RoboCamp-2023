@@ -1,3 +1,7 @@
+---
+glightbox: false
+---
+
 # Robotický tábor
 
 ## Vítej na stránkách Robotického tábora 2023

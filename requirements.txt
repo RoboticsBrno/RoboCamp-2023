@@ -1,5 +1,5 @@
-mkdocs
-mkdocs-material
-mkdocs-glightbox
-mkdocs-open-in-new-tab
-mkdocs-awesome-pages-plugin
+mkdocs==1.4.3
+mkdocs-material==9.1.17
+mkdocs-macros-plugin==1.0.1
+mkdocs-open-in-new-tab==1.0.2
+mkdocs-glightbox==0.3.4

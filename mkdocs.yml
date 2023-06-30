@@ -64,7 +64,6 @@ markdown_extensions:
 
 plugins:
     - search
-    - awesome-pages
     - open-in-new-tab
     - glightbox
 
@@ -92,4 +91,3 @@ extra_javascript:
 nav:
     - Domů:
         - index.md
-    - ...
