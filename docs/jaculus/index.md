@@ -22,3 +22,10 @@ setInterval(() => { // (4)!
 3.  Set the pin mode to output.
 4.	Repeat the following code every second.
 5.  Toggle the LED state every second.
+
+
+![Example text](../assets/logo.png)
+<figure markdown>This is a caption</figure>
+
+![Example text](../assets/Espressif_Logo.jpg)
+<figure markdown>This is Espressif's logo</figure>
