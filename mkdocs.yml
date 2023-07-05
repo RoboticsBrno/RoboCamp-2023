@@ -23,8 +23,7 @@ theme:
     - navigation.top
     - content.code.copy
     - content.code.annotate
-
-  # custom_dir: overrides
+  custom_dir: overrides
 
   icon:
     repo: fontawesome/brands/github
@@ -42,7 +41,6 @@ theme:
       toggle:
         icon: material/weather-night
         name: Přepnout na tmavý režim
-
 
 markdown_extensions:
   - pymdownx.highlight
@@ -64,23 +62,22 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
-    - search
-    - open-in-new-tab
-    - glightbox:
-        auto_caption: true
-    - resize-images:
-        source-dir: assets-large
-        target-dir: assets
-        enable_cache: True
-        size: [800, 600]
-        extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg']
-    # - typedoc:
-    #     source: './ts-examples/@types/*.d.ts'
-    #     output_dir: 'typedocApi'
-    #     tsconfig: './ts-examples/tsconfig.json'
-    #     options: 'typedoc.json'
-    #     name: 'API Doc'
-
+  - search
+  - open-in-new-tab
+  - glightbox:
+      auto_caption: true
+  - resize-images:
+      source-dir: assets-large
+      target-dir: assets
+      enable_cache: True
+      size: [800, 600]
+      extensions: [".jpg", ".jpeg", ".png", ".gif"]
+  # - typedoc:
+  #     source: './ts-examples/@types/*.d.ts'
+  #     output_dir: 'typedocApi'
+  #     tsconfig: './ts-examples/tsconfig.json'
+  #     options: 'typedoc.json'
+  #     name: 'API Doc'
 
 extra:
   social:
@@ -98,14 +95,24 @@ extra:
 #     provider: google
 #     property: ASD
 
-
 extra_css:
   - assets/style.css
 
 nav:
   - Domů:
-    - index.md
+      - index.md
   - Jaculus:
-    - jaculus/index.md
+      - jaculus/index.md
+  - Hrací kostka:
+      - electronicDie/README.md
+      - electronicDie/manual.md
+  - Pájecí výzva:
+      - solderingChallenge/README.md
+      - solderingChallenge/manual.md
+  - Electron:
+      - electron/README.md
+      - electron/electron-lesson-1.md
+      - electron/electron-lesson-2.md
+      - electron/electron-lesson-3.md
   - Náš tým:
-    - team/index.md
+      - team/index.md

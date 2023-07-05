@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="39.6875mm"
+   height="35.527252mm"
+   viewBox="0 0 39.6875 35.527252"
+   version="1.1"
+   id="svg26943"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="electron-02.svg">
+  <defs
+     id="defs26937" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="16.139859"
+     inkscape:cy="-9.8704818"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="1072"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata26940">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Vrstva 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(226.89324,85.809358)">
+    <g
+       transform="matrix(0.01296615,0,0,0.01296615,-401.54174,-192.26145)"
+       style="fill:#ffffff;fill-opacity:0;stroke:#ffffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+       id="g5426">
+      <g
+         id="g5392" />
+      <g
+         style="fill:#ff6e42;fill-opacity:0;stroke:#ff6e42;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+         id="g5394" />
+      <g
+         style="fill:#ff6e42;fill-opacity:0;stroke:#ff6e42;stroke-width:100;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+         id="g5398">
+        <rect
+           x="14000"
+           y="10100"
+           width="2000"
+           height="800"
+           rx="0"
+           id="rect5396" />
+      </g>
+      <g
+         style="fill:#ff6e42;fill-opacity:0;stroke:#ff6e42;stroke-width:60;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+         id="g5404">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 16000,10500 h 500"
+           id="path5400" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 14000,10500 h -500"
+           id="path5402" />
+      </g>
+      <g
+         style="fill:#ffffff;fill-opacity:0;stroke:#ffffff;stroke-width:60;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+         id="g5424">
+        <text
+           style="font-size:660px;text-anchor:middle;opacity:0"
+           x="15000"
+           y="8770"
+           textLength="560"
+           font-size="660"
+           lengthAdjust="spacingAndGlyphs"
+           id="text5406">R</text>
+        <path
+           inkscape:connector-curvature="0"
+           d="m 15150,8740 -170,-240"
+           id="path5408" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 14860,8740 v -500 h 190 l 50,30 30,20 20,50 v 70 l -20,50 -30,20 -50,20 h -190"
+           id="path5410" />
+        <text
+           style="font-size:660px;text-anchor:middle;opacity:0"
+           x="15000"
+           y="9610"
+           textLength="2060"
+           font-size="660"
+           lengthAdjust="spacingAndGlyphs"
+           id="text5412">180Ω</text>
+        <path
+           inkscape:connector-curvature="0"
+           d="m 14380,9580 h -290"
+           id="path5414" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 14230,9580 v -500 l -40,70 -50,50 -50,20"
+           id="path5416" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 14660,9300 -50,-30 -20,-20 -20,-50 v -20 l 20,-50 20,-20 50,-30 h 100 l 40,30 30,20 20,50 v 20 l -20,50 -30,20 -40,30 h -100 l -50,20 -20,20 -20,50 v 100 l 20,40 20,30 50,20 h 100 l 40,-20 30,-30 20,-40 v -100 l -20,-50 -30,-20 -40,-20"
+           id="path5418" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 15160,9080 h 50 l 50,30 20,20 20,50 30,90 v 120 l -30,100 -20,40 -20,30 -50,20 h -50 l -50,-20 -20,-30 -20,-40 -30,-100 v -120 l 30,-90 20,-50 20,-20 50,-30"
+           id="path5420" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 15520,9580 h 120 v -90 l -50,-30 -50,-50 -20,-70 v -120 l 20,-70 50,-40 70,-30 h 100 l 70,30 50,40 20,70 v 120 l -20,70 -50,50 -50,30 v 90 h 120"
+           id="path5422" />
+      </g>
+    </g>
+  </g>
+</svg>

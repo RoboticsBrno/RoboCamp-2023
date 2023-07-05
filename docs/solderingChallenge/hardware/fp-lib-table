@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name RoboCamp)(type KiCad)(uri ${KIPRJMOD}/../../../common/RoboCamp.pretty)(options "")(descr ""))
+)

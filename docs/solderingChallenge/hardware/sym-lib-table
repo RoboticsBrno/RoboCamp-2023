@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name RoboCamp)(type Legacy)(uri ${KIPRJMOD}/../../../common/RoboCamp.lib)(options "")(descr ""))
+  (lib (name solderingChallenge-rescue)(type Legacy)(uri ${KIPRJMOD}/solderingChallenge-rescue.lib)(options "")(descr ""))
+)

@@ -24,7 +24,7 @@ setInterval(() => { // (4)!
 5.  Toggle the LED state every second.
 
 
-![Example text](../assets/logo.png)
+![Jaculus](./assets/jaculus-ts.png)
 <figure markdown>This is a caption</figure>
 
 ![Example text](../assets/Espressif_Logo.jpg)

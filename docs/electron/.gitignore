@@ -1,0 +1,4 @@
+build
+*.kicad_pcb-*
+*.sch-*
+_autosave-*
