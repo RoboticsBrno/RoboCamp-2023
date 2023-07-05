@@ -36,9 +36,9 @@ glightbox: false
             </a>
         </div>
         <div class="col--1">
-            <a href="jaculus/">
-                <img src="jaculus/assets/jaculus-ts.png">
-                <h2>Jaculus</h2>
+            <a href="elks/">
+                <img src="elks/assets/elks-box.png">
+                <h2>ELKS</h2>
             </a>
         </div>
         <div class="col--1">
