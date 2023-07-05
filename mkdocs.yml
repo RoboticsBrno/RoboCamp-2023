@@ -103,6 +103,7 @@ nav:
       - index.md
   - Jaculus:
       - jaculus/index.md
+      - jaculus/lekce1/index.md
   - Hrací kostka:
       - electronicDie/README.md
       - electronicDie/manual.md
