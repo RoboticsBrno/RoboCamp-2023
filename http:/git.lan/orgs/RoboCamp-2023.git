@@ -1,0 +1,24 @@
+kind: pipeline
+type: docker
+name: build and deploy
+
+trigger:
+  branch:
+    - main
+  event:
+    - push
+
+steps:
+  - name: build and deploy
+    image: yaqwsx/robocamp2022:latest
+    commands:
+      - pip install -r requirements.txt
+      - mkdocs build
+      - sshpass -e rsync -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" -a --delete ./site/  $${MACHINE_USER}@$${MACHINE}:tabor/websites/guide/
+    environment:
+      MACHINE_USER:
+        from_secret: MACHINE_USER
+      MACHINE:
+        from_secret: MACHINE
+      SSHPASS:
+        from_secret: MACHINE_PASSWORD
