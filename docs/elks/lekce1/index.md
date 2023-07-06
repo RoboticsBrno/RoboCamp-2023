@@ -144,12 +144,12 @@ Ve zdrojovém kódu jsou komentáře (`// tohle je komentář`), které nám pop
 		...
 		```
 
-3. Pokusíme se změnit rychlost blikání.
+3. Pokusíme se změnit rychlost vypisování.
 
 	??? note "Řešení"
 		```ts
 		...
-		BUDE...
+		}, 500); // tady jsem změnil rychlost vypisování
 		...
 		```
 4. Upravíme si barvu.
@@ -159,8 +159,8 @@ Ve zdrojovém kódu jsou komentáře (`// tohle je komentář`), které nám pop
 		```ts
 		...
 		const LED_PIN = 48;
-		const LED_PIN_COUNT = 1;
+		const LED_COUNT = 1;
 
-		const ledStrip = new Neopixel(LED_PIN, LED_PIN_COUNT);  // připojí pásek na pin 48, s 1 ledkou
+		const ledStrip = new Neopixel(LED_PIN, LED_COUNT);  // připojí pásek na pin 48, s 1 ledkou
 		...
 		```
