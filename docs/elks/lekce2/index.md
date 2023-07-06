@@ -14,7 +14,9 @@ Na začátku tohoto úkolu si stáhneme nový [zip]() soubor obsahující prázd
     ```ts 
     import { Neopixel } from "neopixel";
 
-    const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+    const ledPin = 48;
+
+    const ledStrip = new Neopixel(ledPin, 1);  // připojí pásek na pin 48, s 1 ledkou
 
     ledStrip.set(0, {r: 255, g: 0, b: 0}); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
     ledStrip.show(); // zobrazí nastavení na LED
@@ -35,16 +37,19 @@ Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na E
     import * as gpio from "gpio";
     import { Neopixel } from "neopixel";
 
-    const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+    const ledPin = 48;
+    const btnPin = 0;
 
-    gpio.pinMode(0, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
+    const ledStrip = new Neopixel(ledPin, 1);  // připojí pásek na pin 48, s 1 ledkou
 
-    gpio.on("falling", 0, () => { // událost, která proběhne při stisknutí tlačítka připojeného na pin 0
+    gpio.pinMode(btnPin, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
+
+    gpio.on("falling", btnPin, () => { // událost, která proběhne při stisknutí tlačítka připojeného na pin 0
         ledStrip.set(0, {r: 255, g: 0, b: 0}); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
         ledStrip.show(); // zobrazí nastavení na LED
     });
 
-    gpio.on("rising", 0, () => { // událost, která proběhne při puštění tlačítka připojeného na pin 0
+    gpio.on("rising", btnPin, () => { // událost, která proběhne při puštění tlačítka připojeného na pin 0
         ledStrip.set(0, {r: 0, g: 0, b: 0}); // nastaví nultou LED na zhasnutou (RGB 0 0 0)
         ledStrip.show(); // zobrazí nastavení na LED
     });
@@ -58,10 +63,12 @@ Dvakrát za sekundu vypíšeme stav zmáčnutí tlačítka (0 nebo 1). Opakován
     ```ts
     import * as gpio from "gpio";
 
-    gpio.pinMode(0, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
+    const btnPin = 0;
+
+    gpio.pinMode(btnPin, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
 
     setInterval(() => { // pravidelně vyvolává událost
-        console.log(gpio.read(0)); // načte a vypíše stav tlačítka připojeného na pin 0
+        console.log(gpio.read(btnPin)); // načte a vypíše stav tlačítka připojeného na pin 0
     }, 500); // čas opakování se udává v milisekundách (500 ms je 0,5 sekundy)
     ```
 
