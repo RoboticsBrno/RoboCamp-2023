@@ -20,6 +20,15 @@ let second : number = 20; // Vytváření a přiřazení můžeme zkombinovat
 let truth : bool = true; // Vytvoří proměnnou typu bool, která reprezentuje pravdu
 ```
 
+S proměnnými stejně jako s čísly můžeme provádět základní operace.
+
+```ts
+let a : number = 10;
+let b : number = 5;
+let c : number = a + b;
+let d : number = b - a;
+```
+
 Abychom na základě hodnot proměnných mohli měnit chování programu, potřebujeme **podmínky**.
 
 Podmínka `if` na základě pravdivostní hodnoty rozhodne, zda se vykoná daný kus kódu. Pokud proměnná
@@ -31,22 +40,32 @@ if (condition) {
 }
 ```
 
-bude `result` mít hodnotu `20`, pokud `condition` má hodnotu `true`, a `10`, pokud má hodnotu `false`.
+Pokud `condition` má hodnotu `true`, bude v `result` 20, pokud má `condition` hodnotu `false`, bude v `result` 10.
 
 Rovněž se můžeme v podmínce rozhodovat na základě porovnávání číselných hodnot.
 
 ```ts
 let first : number;
 let second : number;
-/* ... */
+...
 if (first == second) {
-  /* ... */
+  ...
 }
 ```
-To, zda jsou dvě čísla stejná, zjistíme pomocí `==`, zda je jedno větší než druhé zjišťujeme pomocí `<` a `>`.
 
-Pokud se chceme zachovat dvěma různými způsoby, použijeme konstrukci `if (podmínka) { a } else { b }`. Pokud
-podmínka platí, vykoná se kód `a`, pokud neplatí, vykoná se kód `b`.
+To, zda jsou dvě čísla stejná, zjistíme pomocí `==`, zda je jedno větší než druhé zjišťujeme pomocí `<` a `>`, případně `<=` a `>=`.
+
+Pokud se chceme zachovat dvěma různými způsoby, použijeme konstrukci
+
+```ts
+if (podmínka) {
+  a 
+} else { 
+  b 
+}
+```
+
+Pokud podmínka platí, vykoná se kód `a`, pokud neplatí, vykoná se kód `b`.
 
 Za použití proměnných a podmínek rozsvítíme světlo na naší desce různými barvami.
 
@@ -57,17 +76,14 @@ Tyto barvy mícháme v různých poměrech od 0 do 255, a vytváříme tak různ
 - Druhá (g) dává množství zelené
 - Třetí (b) dává množství modré
 
-Ve výchozím stavu je LED vypnutá (barvy `(0, 0, 0)`), a nejsilnější bílé světlo získáme použitím všech
-barev na maximum (barvy `(255, 255, 255)`).
-
-Alternativně můžeme barvy reprezentovat pomocí odstínu, sytosti barvy, a světlosti. Mezi jednotlivými
-reprezentacemi umíme převádět podle potřeby.
+Ve výchozím stavu je LED vypnutá (hodnoty `(0, 0, 0)`), a nejsilnější bílé světlo získáme použitím všech
+barev na maximum (hodnoty `(255, 255, 255)`).
 
 ## Zadání A
 
 Pomocí jedné proměnné se stavem a podmínky každou sekundu buď rozsvítíme, nebo zhasneme LED na desce.
 
-??? Řešení
+??? note "Řešení"
   ```ts
   import * from "./colors.js"
   import { Neopixel } from "neopixel";
@@ -95,17 +111,17 @@ Pomocí funkce `colors.rainbow` budeme procházet duhu. Jde o funkci, která dos
 a na základě toho vrátí barvu na barevném spektru. V daném intervalu (např. 100 ms) budeme postupně zvyšovat číslo a nastavovat barvu LEDky na `colors.rainbow(cislo)`. Pokud naše číslo přesáhne hodnotu `360`, musíme ho
 opět nastavit na `0`.
 
-??? Řešení
+??? note "Řešení"
   ```ts
-  import { Color, rainbow } from "./colors.js"
+  import * from "./colors.js"
   import { Neopixel } from "neopixel";
 
-  const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+  const ledStrip = new Neopixel(14, 1);  // připojí pásek na pin 48, s 1 ledkou
 
   let shade = 0; // Držíme si stav s aktuálním odstínem
 
   setInterval(() => {
-      ledStrip.set(0, rainbow(shade)); // Nastavíme LED na aktuální odstín
+      ledStrip.set(0, colors.rainbow(shade)); // Nastavíme LED na aktuální odstín
       ledStrip.show(); // Zobrazíme vybranou barvu
       shade = shade + 1; // Zvedneme odstín
       if (shade > 360) {
@@ -121,17 +137,37 @@ Do desky si zapojíme pásku 8 světel, a vybranou barvou je budeme rozsvěcet.
 Po stisku tlačítka zhasneme aktuální LEDku, a rozsvítíme tu další.
 Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme opět první LED.
 
-// TODO řešení
+??? note "Řešení"
+  ```ts
+  import * as colors from "./colors.js"
+  import { Neopixel, Rgb } from "neopixel";
+  import * as gpio from "gpio";
+
+  gpio.pinMode(0, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
+  const ledStrip = new Neopixel(14, 8);  // Připojíme LED pásek na pin 14
+
+  let index : number = 0;
+  let color : Rgb = colors.light_blue; // Vybereme si barvu
+  ledStrip.set(0, color); // Rozsvítíme první LED
+
+  gpio.on("falling", 0, () => {
+      ledStrip.set(index, colors.off); // Vypneme předchozí LED
+      index = index + 1; // Zvedneme index
+      if(index > 7){ // Pokud jsme mimo rozsah pásku, vrátíme se na začátek
+          index = 0;
+      }
+      ledStrip.set(index, color); // Nastavíme aktuální LED
+      ledStrip.show();
+  });
+  ```
 
 ## Výstupní úkol V1
 
-Knightrider - LED pásek se rozsvítí a zhasíná od kraje ke kraji
-mám index který svítí, a posouvám ho doprava a doleva podle podmínky - bool - směr
+Knightrider: svítící LED "běhá" s danou rychlostí od začátku do konce pásky.
+Jakmile dorazí na konec, změní směr, a posouvá se opačným směrem.
 
-## Bonusy
-- změna barvy
-- táhnoucí se stopa
+## Pro dobrovolníky
 
-FILIP F
+- Jezdec může při běhu měnit barvy (např. pomocí funkce rainbow)
 
-
+- Jezdec může zanechávat stopu: barva nezmizí hned, ale až s odstupem. Barva může "mizet" postupně: intenzita stopy se časem snižuje.
