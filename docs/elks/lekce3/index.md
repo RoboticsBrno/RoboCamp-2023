@@ -116,7 +116,7 @@ opět nastavit na `0`.
   import * from "./colors.js"
   import { Neopixel } from "neopixel";
 
-  const ledStrip = new Neopixel(14, 1);  // připojí pásek na pin 48, s 1 ledkou
+  const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
 
   let shade = 0; // Držíme si stav s aktuálním odstínem
 
