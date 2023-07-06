@@ -71,7 +71,7 @@ plugins:
       source-dir: assets-large
       target-dir: assets
       enable_cache: True
-      size: [800, 600]
+      size: [1000, 800]
       extensions: [".jpg", ".jpeg", ".png", ".gif"]
   # - typedoc:
   #     source: './docs/jaculus/lekce1/example1/@types/*.d.ts'

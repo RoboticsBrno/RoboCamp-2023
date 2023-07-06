@@ -1,4 +1,4 @@
-# Lekce 1 - programovací prostředí + první program
+# Lekce 1 - první program
 
 V této lekci si představíme Jaculus, nainstalujeme si programovací prostředí a spustíme první program.
 
@@ -10,29 +10,32 @@ Pro práci s Jaculem je nutné nainstalovat několik programů.
 
 Node.js je program, který nám umožní nahrávat kód do Jacula a komunikovat s ním.
 
-1. Stáhněte si [Node.js](https://nodejs.org/en/download) (nejnovější stabilní verzi - LTS)</a>.
-2. Nainstalujte jej dle výchozího nastavení (není potřeba nic měnit).
+1. Stáhneme si [Node.js](https://nodejs.org/en/download) (nejnovější stabilní verzi - LTS) - [Stahuj ZDE pro Windows](http://files.lan/node-v18.16.1-x64.msi)
+2. Nainstalujeme jej dle výchozího nastavení (není potřeba nic měnit).
 
 ### Visual Studio Code
 
-Visual Studio Code je programovací prostředí, které nám umožní psát kód a nahrávat jej do Jacula.
+Visual Studio Code je programovací prostředí, které nám umožní psát kód a s rozšířením nám dovolí nahrávat kód do zařízení.
 
-1. Stáhněte si [Visual Studio Code](https://code.visualstudio.com/download) (nejnovější stabilní verzi)</a>.
-2. Nainstalujte jej dle výchozího nastavení (není potřeba nic měnit).
+1. Stáhneme si [Visual Studio Code](https://code.visualstudio.com/download) (nejnovější stabilní verzi) - [Stahuj ZDE pro Windows](http://files.lan/VSCodeUserSetup-x64-1.79.2.exe)
+2. Nainstalujeme jej dle výchozího nastavení (není potřeba nic měnit).
 
 ### Jaculus
 
 Jaculus je program, který nám umožní nahrávat kód do Jacula a komunikovat s ním.
 
-1. Po instalaci Nodu restartujte aplikaci Visual Studio Code.
-2. V horním menu VSCode vyberte záložku `Terminal` a zvolte `New Terminal`.
-3. Do terminálu zadejte příkaz. Na `Linuxu` bude jejspíše potřeba `sudo`.
+1. Po instalaci Nodu **restartujeme** aplikaci Visual Studio Code.
+2. V horním menu VSCode vyberte záložku `Terminal` a zvolíme `New Terminal`.
+3. Do terminálu zadáme příkaz vypsaný níže. Na `Linuxu` bude nejspíše potřeba `sudo` práva.
 
 	```bash
 	npm install -g jaculus
 	```
 
-4. Pro otestování instalace zadejte do terminálu příkaz:
+	??? tip "Háže mi to chybu"
+		Pro aplikování všech změn je nutný restart VSCode. Pokud se vám nedaří nainstalovat Jaculus, zkuste nejdříve restartovat VSCode.
+
+4. Pro otestování instalace zadáme do terminálu příkaz:
 
 	```bash
 	npx jac
@@ -40,16 +43,52 @@ Jaculus je program, který nám umožní nahrávat kód do Jacula a komunikovat 
 
 	Program by měl vypsat nápovědu.
 
+	??? info "Ukázka nápovědy"
+		```bash
+		Usage: jac <command>
+
+		Tools for controlling devices running Jaculus
+
+		Commands:
+		help           Print help for given command
+		list-ports     List available serial ports
+		serial-socket  Tunnel a serial port over a TCP socket
+		install        Install Jaculus to device
+		build          Compile target file
+		flash          Flash code to device (replace contents of ./code)
+		pull           Download a file/directory from device
+		ls             List files in a directory
+		read           Read a file from device
+		write          Write a file to device
+		rm             Delete a file on device
+		mkdir          Create a directory on device
+		rmdir          Delete a directory on device
+		upload         Upload a file/directory to device
+		start          Start a program
+		stop           Stop a program
+		status         Get status of device
+		version        Get version of device firmware
+		monitor        Monitor program output
+
+		Global options:
+		--log-level   Set log level (default: info)
+		--help        Print this help message
+		--port        Serial port to use (default: first available)
+		--baudrate    Baudrate to use (default: 921600)
+		--socket      host:port to use
+		```
+
+
 
 ### Jaculus VSCode Rozšíření
 
 Rozšíření pro VSCode nám umožní jednoduše nahrávat kód do Jacula pomocí ikonek a klávesových zkratek.
 
 1. V levém menu VSCode vyberte záložku `Extensions` a vyhledejte `Jaculus`.
-	- SCREENSHOT
+	![Rozšíření](./assets/extension.png)
 2. Zvolte `Install`.
 3. Po otevření projektu by se vám ve spodní liště měly objevit oranžové ikonky Jacula.
-   - SCREENSHOT
+   	![Rozšíření bar](./assets/bar.png)
 
 ??? note "Používám Windows a nemůžu se připojit přes USB UART"
 	Pokud se vám nedaří připojit na USB UART port, je nutné doinstalovat správné drivery.
@@ -61,19 +100,67 @@ Rozšíření pro VSCode nám umožní jednoduše nahrávat kód do Jacula pomoc
 
 ## První projekt
 
-1. zip
-2. rozbalit
-3. otevřít v vscode
-4. výběr portu
-5. monitor
+Zde si vyzkoušíme vytvořit první projekt a nahrát jej do ELKS.
+
+
+1. V prvním kroku si na počítači nachystáme složku `RoboCamp-2023` do které si budeme ukládat veškeré projekty.
+2. Dále si [stáhneme zip](ZIP) soubor s prvním projektem.
+3. Poté si jej **rozbalíme** do vytvořené složky k táboru.
+4. Spustíme VSCode a pomocí záložky `File` -> `Open Folder` vybereme složku s projektem.
+5. V levém spodním rohu vybereme :material-power-plug:`Select COM port` pro výběr portu, na kterém je ELKS připojený. Poté se nápis změní na vybraný port.
+	??? tip "Mám více portů"
+		Pokud se vám v nabídce zobrazí více portů, odpojte ELKS a zjisťe, který port zmizel. Po připojení ELKS tento port vyberte.
+6. Dále zvolíme :material-eye:`Monitor`, ten slouží pro TODO
 
 ## Nahrání programu
-1. build flash
-2. monitor
-3. vidím výstup
+
+Pokud nám všem funguje připojení na :material-eye:`Monitor` a běží nám komunikace s ELKSem, můžeme si tam zkusit nahrát náš první kód.
+
+1. Ve VSCodu máme otevřený první projekt. V levém `Exploreru` (`Průzkumníku`) vybereme soubor ze  `src` -> `index.ts`. V něm vidíme náš první program.
+2. Poté zvolíme :octicons-gear-16:`Build and Flash` pro nahrání programu do ELKS.
+	![První program](./assets/first-code.png)
+3. Stejně jako v předchozí části kliknem na tlačítko :material-eye:`Monitor`. Měli bychom vidět výstup z programu.
+4.
+	```bash
+	$ jac monitor --port /dev/tty.usbmodem213101
+	Connecting to serial at /dev/tty.usbmodem213101 at 921600 bauds... Connected.
+
+	Robotický tábor 2023, zdraví Jirka Vácha!
+	Robotický tábor 2023, zdraví Jirka Vácha!
+	```
 
 ## Úprava programu
-1. změna textu
-2. rychlost blikání
-3. změna barvy
-4. přidání konstan pro zadefinování portů
+
+Pokud nám funguje nahrávání kódu, můžeme se na něj podívat a zkusit jej upravit.
+Ve zdrojovém kódu jsou komentáře (`# to hle je komentář`), které nám popisují, co který řádek dělá.
+
+1. Prostudujeme si zdrojový kód.
+2. Upravíme si pozdrav na své jméno.
+
+	??? note "Řešení"
+		```ts
+		...
+		console.log("Robotický tábor 2023, zdraví Franta Flinta!");  // tady jsem změnil své jméno
+		...
+		```
+
+3. Pokusíme se změnit rychlost blikání.
+
+	??? note "Řešení"
+		```ts
+		...
+		BUDE...
+		...
+		```
+4. Upravíme si barvu.
+5. Upravímes si číselné proměnné na pojmenované konstanty.
+
+	??? note "Pojmenované konstanty"
+		```ts
+		...
+		const LED_PIN = 48;
+		const LED_PIN_COUNT = 1;
+
+		const ledStrip = new Neopixel(LED_PIN, LED_PIN_COUNT);  // připojí pásek na pin 48, s 1 ledkou
+		...
+		```
