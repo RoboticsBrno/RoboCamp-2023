@@ -10,7 +10,7 @@ trigger:
 
 steps:
   - name: build and deploy
-    image: yaqwsx/robocamp2022:latest
+    image: haberturdeur/robocamp2023:latest
     commands:
       - pip install -r requirements.txt
       - mkdocs build
