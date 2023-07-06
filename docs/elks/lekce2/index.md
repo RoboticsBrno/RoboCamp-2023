@@ -39,12 +39,12 @@ Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na E
 
     gpio.pinMode(0, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
 
-    gpio.on("falling", 0, () => { // event, který proběhne při stisknutí tlačítka připojeného na pin 0
+    gpio.on("falling", 0, () => { // událost, která proběhne při stisknutí tlačítka připojeného na pin 0
         ledStrip.set(0, {r: 255, g: 0, b: 0}); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
         ledStrip.show(); // zobrazí nastavení na LED
     });
 
-    gpio.on("rising", 0, () => { // event, který proběhne při puštění tlačítka připojeného na pin 0
+    gpio.on("rising", 0, () => { // událost, která proběhne při puštění tlačítka připojeného na pin 0
         ledStrip.set(0, {r: 0, g: 0, b: 0}); // nastaví nultou LED na zhasnutou (RGB 0 0 0)
         ledStrip.show(); // zobrazí nastavení na LED
     });
