@@ -1,34 +1,74 @@
-# Lekce 2 - RGB LED + tlačítko
+# Lekce 2 - RGB LED + tlačítko + eventy
 
-program jde od shora dolů
-imperativní jazyk
+V této lekci si ukážeme ovládání RGB LED umístěné na ESP32 a práci s eventy řízenými tlačítkem nebo časem. 
+
+Jelikož je TypeScript (JavaScript) imperativní, vykonávájí se příkazy v takovém pořadí, v jakém jsou zapsány.
 
 ## Zadání A
 
-nový zip -
+Rozsvítíme RGB LED na ESP32 (GPIO 48) jednou barvou (například červenou). 
 
-Rozsvítíme RGB LED jednou barvou (z colors).
+Na začátku tohoto úkolu si stáhneme nový [zip]() soubor obsahující prázdný projekt. Po stažení složku rozbalíme a otevřeme ve Visual Studio Code.
 
+??? note "Řešení"
+    ```ts 
+    import { Neopixel } from "neopixel";
+
+    const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+
+    ledStrip.set(0, {r: 255, g: 0, b: 0}); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
+    ledStrip.show(); // zobrazí nastavení na LED
+    ```
+
+## Co je to event?
+
+Událost, která je programem rozpoznávána (například stisknutí nebo puštění tlačítka nebo uplynutí nějakého času).
+
+Po zaznamenání eventu vykoná program kód, který je k němu přiřazen.
 
 ## Zadání B
 
-Event - co to je?
- - událost
+Pomocí eventů rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na ESP32 (GPIO 48) a při puštění ho opět zhasneme.
 
-při stusknutí tlačítka se rozsvítí ledka
-při puštění tlačítka se zhasne ledka
+??? note "Řešení"
+    ```ts 
+    import * as gpio from "gpio";
+    import { Neopixel } from "neopixel";
+
+    const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+
+    gpio.pinMode(0, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
+
+    gpio.on("falling", 0, () => { // event, který proběhne při stisknutí tlačítka připojeného na pin 0
+        ledStrip.set(0, {r: 255, g: 0, b: 0}); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
+        ledStrip.show(); // zobrazí nastavení na LED
+    });
+
+    gpio.on("rising", 0, () => { // event, který proběhne při puštění tlačítka připojeného na pin 0
+        ledStrip.set(0, {r: 0, g: 0, b: 0}); // nastaví nultou LED na zhasnutou (RGB 0 0 0)
+        ledStrip.show(); // zobrazí nastavení na LED
+    });
+    ```
 
 ## Zadání C
 
+Dvakrát za vteřinu vypíšeme stav zmáčnutí tlačítka (0 nebo 1). Opakování dosáhneme pomocí `setInterval()`.
 
-vypisuji stav talčítka (pin 0) pomocí setInterval()
+??? note "Řešení"
+    ```ts
+    import * as gpio from "gpio";
+
+    gpio.pinMode(0, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
+
+    setInterval(() => { // event, který proběhne každých 500 ms
+        console.log(gpio.read(0)); // načte a vypíše stav tlačítka připojeného na pin 0
+    }, 500);
+    ```
 
 ## Zadání výstupního úkolu V1
 
-při kliknutí na tlačítko vypiš pozdrav
+Při stisknutí tlačítka (GPIO 0) vypíšeme pozdrav.
 
 ## Zadání výstupního úkolu V2
 
-přepínání mezi barvami při stejném intervalu
-
-HONZA C
+Při stisknutí tlačítka (GPIO 0) rozsvítíme RGB LED na ESP32 (GPIO 48) jednou barvou a při puštění barvu změníme na jinou.
