@@ -4,8 +4,9 @@ V imperativním programování si držíme stav pomocí **proměnných**. Promě
 které mají nějakou hodnotu, můžeme je měnit, a opakovaně používat v různých částech kódu.
 
 Proměnná má svůj typ, který určuje, jaké hodnoty může proměnná mít. Proměnnou vytvoříme pomocí
-klíčového slova `let`
-Každý jazyk má několik základních typů, zatím nám budou stačit dvě:
+klíčového slova `let`.
+Každý jazyk má několik základních typů, zatím nám budou stačit dva:
+
 - **number**: základní číselný typ, může nabývat např. hodnot: `1`, `2`, `10`, `-5`, `0.5`
 - **bool**: základní pravdivostní typ, který nabývá hodnot `true` a `false`
 
@@ -47,23 +48,24 @@ To, zda jsou dvě čísla stejná, zjistíme pomocí `==`, zda je jedno větší
 Pokud se chceme zachovat dvěma různými způsoby, použijeme konstrukci `if (podmínka) { a } else { b }`. Pokud
 podmínka platí, vykoná se kód `a`, pokud neplatí, vykoná se kód `b`.
 
-Za použití proměnných a podmínek budeme rozsvícet světlo na naší desce různými barvami.
+Za použití proměnných a podmínek rozsvítíme světlo na naší desce různými barvami.
 
 Barevné světlo vytváříme ze tří základních barev: červená (RED), zelená (GREEN), a modrá (BLUE).
 Tyto barvy mícháme v různých poměrech od 0 do 255, a vytváříme tak různé barvy:
+
 - První hodnota (r) nám dává množství červené (tedy např. hodnoty 100, 0, 0) rozsvítí LEDku červeně
 - Druhá (g) dává množství zelené
 - Třetí (b) dává množství modré
 
-Ve výchozím stavu je LED vypnutá (barvy (0, 0, 0)), a nejsilnější bílé světlo získáme použitím všech
-barev na maximum (barvy (255, 255, 255)).
+Ve výchozím stavu je LED vypnutá (barvy `(0, 0, 0)`), a nejsilnější bílé světlo získáme použitím všech
+barev na maximum (barvy `(255, 255, 255)`).
 
 Alternativně můžeme barvy reprezentovat pomocí odstínu, sytosti barvy, a světlosti. Mezi jednotlivými
 reprezentacemi umíme převádět podle potřeby.
 
 ## Zadání A
 
-Pomocí jedné proměnné se stavem a podmínky každou sekudnu buď rozsvítíme, nebo zhasneme LED na desce.
+Pomocí jedné proměnné se stavem a podmínky každou sekundu buď rozsvítíme, nebo zhasneme LED na desce.
 
 ??? Řešení
   ```ts
@@ -72,7 +74,7 @@ Pomocí jedné proměnné se stavem a podmínky každou sekudnu buď rozsvítím
 
   const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
 
-  var on : bool = false; // LED je vypnutá
+  let on : bool = false; // LED je vypnutá
 
   setInterval(() => {
     if(on){ // Pokud je LED zapnutá
@@ -86,11 +88,11 @@ Pomocí jedné proměnné se stavem a podmínky každou sekudnu buď rozsvítím
     }
   }, 1000);
   ```
+
 ## Zadání B
 
-Pomocí výrazu `colors.rainbow` budeme procházet duhu. Jde o funkci, která dostane číslo od 0 do 360,
-a na základě toho vrátí barvu na barevném spektru. V daném intervalu (např. 100 ms) budeme postupně
-a nastavujte barvu LEDky na `colors.rainbow(cislo)`. Pokud naše číslo přesáhne hodnotu `360`, musíme ho
+Pomocí funkce `colors.rainbow` budeme procházet duhu. Jde o funkci, která dostane číslo od 0 do 360,
+a na základě toho vrátí barvu na barevném spektru. V daném intervalu (např. 100 ms) budeme postupně zvyšovat číslo a nastavovat barvu LEDky na `colors.rainbow(cislo)`. Pokud naše číslo přesáhne hodnotu `360`, musíme ho
 opět nastavit na `0`.
 
 ??? Řešení
@@ -100,7 +102,7 @@ opět nastavit na `0`.
 
   const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
 
-  var shade = 0; // Držíme si stav s aktuálním odstínem
+  let shade = 0; // Držíme si stav s aktuálním odstínem
 
   setInterval(() => {
       ledStrip.set(0, rainbow(shade)); // Nastavíme LED na aktuální odstín
@@ -114,15 +116,16 @@ opět nastavit na `0`.
 
 ## Zadání C
 
-Tentokrát budeme reagovat na stisk tlačítka. Do desky si zapojíme pásku 8 světel, a vybranou barvou
-je budeme rozsvěcet. Po stisku tlačítka zhasneme aktuální LEDku, a rozsvítíme tu další. Pokud při stisku
-tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme opět první LED.
+Tentokrát budeme reagovat na stisk tlačítka.
+Do desky si zapojíme pásku 8 světel, a vybranou barvou je budeme rozsvěcet.
+Po stisku tlačítka zhasneme aktuální LEDku, a rozsvítíme tu další.
+Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme opět první LED.
 
 // TODO řešení
 
 ## Výstupní úkol V1
 
-Knightrider - LED pásek se rozsvítí a zhasíná od kraje k kraji
+Knightrider - LED pásek se rozsvítí a zhasíná od kraje ke kraji
 mám index který svítí, a posouvám ho doprava a doleva podle podmínky - bool - směr
 
 ## Bonusy

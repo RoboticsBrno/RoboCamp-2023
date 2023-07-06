@@ -1,6 +1,6 @@
-# Lekce 2 - RGB LED + tlačítko + eventy
+# Lekce 2 - RGB LED + tlačítko + události
 
-V této lekci si ukážeme ovládání RGB LED umístěné na ESP32 a práci s eventy řízenými tlačítkem nebo časem. 
+V této lekci si ukážeme ovládání RGB LED umístěné na ESP32 a práci s událostmi řízenými tlačítkem nebo časem. 
 
 Jelikož je TypeScript (JavaScript) imperativní, vykonávájí se příkazy v takovém pořadí, v jakém jsou zapsány.
 
@@ -20,15 +20,15 @@ Na začátku tohoto úkolu si stáhneme nový [zip]() soubor obsahující prázd
     ledStrip.show(); // zobrazí nastavení na LED
     ```
 
-## Co je to event?
+## Co je to událost v programování?
 
 Událost, která je programem rozpoznávána (například stisknutí nebo puštění tlačítka nebo uplynutí nějakého času).
 
-Po zaznamenání eventu vykoná program kód, který je k němu přiřazen.
+Po zaznamenání události se vykoná kód, který je k ní přiřazen.¨
 
 ## Zadání B
 
-Pomocí eventů rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na ESP32 (GPIO 48) a při puštění ho opět zhasneme.
+Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na ESP32 (GPIO 48) a při puštění ho opět zhasneme.
 
 ??? note "Řešení"
     ```ts 
@@ -52,7 +52,7 @@ Pomocí eventů rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na ESP3
 
 ## Zadání C
 
-Dvakrát za vteřinu vypíšeme stav zmáčnutí tlačítka (0 nebo 1). Opakování dosáhneme pomocí `setInterval()`.
+Dvakrát za sekundu vypíšeme stav zmáčnutí tlačítka (0 nebo 1). Opakování dosáhneme pomocí `setInterval()`.
 
 ??? note "Řešení"
     ```ts
@@ -60,9 +60,9 @@ Dvakrát za vteřinu vypíšeme stav zmáčnutí tlačítka (0 nebo 1). Opaková
 
     gpio.pinMode(0, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
 
-    setInterval(() => { // event, který proběhne každých 500 ms
+    setInterval(() => { // pravidelně vyvolává událost
         console.log(gpio.read(0)); // načte a vypíše stav tlačítka připojeného na pin 0
-    }, 500);
+    }, 500); // čas opakování se udává v milisekundách (500 ms je 0,5 sekundy)
     ```
 
 ## Zadání výstupního úkolu V1

@@ -73,12 +73,12 @@ plugins:
       enable_cache: True
       size: [1000, 800]
       extensions: [".jpg", ".jpeg", ".png", ".gif"]
-  - typedoc:
-      source: './docs/elks/lekce1/example1/@types/*.d.ts'
-      output_dir: 'jaculusApi'
-      tsconfig: './docs/elks/lekce1/example1/tsconfig.json'
-  #     options: 'typedoc.json'
-      name: 'Jaculus API documentation'
+  # - typedoc:
+  #     source: './docs/elks/lekce1/example1/@types/*.d.ts'
+  #     output_dir: 'jaculusApi'
+  #     tsconfig: './docs/elks/lekce1/example1/tsconfig.json'
+  # #     options: 'typedoc.json'
+  #     name: 'Jaculus API documentation'
 
 extra:
   social:

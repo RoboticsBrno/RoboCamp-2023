@@ -111,17 +111,16 @@ Zde si vyzkoušíme vytvořit první projekt a nahrát jej do ELKS.
 	
 	??? tip "Mám více portů"
 		Pokud se vám v nabídce zobrazí více portů, odpojte ELKS a zjisťe, který port zmizel. Po připojení ELKS tento port vyberte.
-6. Dále zvolíme :material-eye:`Monitor`, ten slouží pro TODO
+6. Dále zvolíme :material-eye:`Monitor`, ten slouží pro komunikaci se zařízením.
 
 ## Nahrání programu
 
-Pokud nám všem funguje připojení na :material-eye:`Monitor` a běží nám komunikace s ELKSem, můžeme si tam zkusit nahrát náš první kód.
+Pokud nám všem funguje připojení na :material-eye:`Monitor` a běží nám komunikace se zařízením, můžeme si tam zkusit nahrát náš první kód.
 
 1. Ve VSCodu máme otevřený první projekt. V levém `Exploreru` (`Průzkumníku`) vybereme soubor ze  `src` -> `index.ts`. V něm vidíme náš první program.
-2. Poté zvolíme :octicons-gear-16:`Build and Flash` pro nahrání programu do ELKS.
+2. Poté zvolíme :octicons-gear-16:`Build and Flash` pro nahrání programu do zařízení.
 	![První program](./assets/first-code.png)
 3. Stejně jako v předchozí části kliknem na tlačítko :material-eye:`Monitor`. Měli bychom vidět výstup z programu.
-4.
 	```bash
 	$ jac monitor --port /dev/tty.usbmodem213101
 	Connecting to serial at /dev/tty.usbmodem213101 at 921600 bauds... Connected.
@@ -129,11 +128,11 @@ Pokud nám všem funguje připojení na :material-eye:`Monitor` a běží nám k
 	Robotický tábor 2023, zdraví Jirka Vácha!
 	Robotický tábor 2023, zdraví Jirka Vácha!
 	```
-
+4. Pro ukončení terminálu, do něj klikneme a stiskneme ++ctrl+c++.
 ## Úprava programu
 
 Pokud nám funguje nahrávání kódu, můžeme se na něj podívat a zkusit jej upravit.
-Ve zdrojovém kódu jsou komentáře (`# to hle je komentář`), které nám popisují, co který řádek dělá.
+Ve zdrojovém kódu jsou komentáře (`// tohle je komentář`), které nám popisují, co který řádek dělá.
 
 1. Prostudujeme si zdrojový kód.
 2. Upravíme si pozdrav na své jméno.
