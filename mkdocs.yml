@@ -73,12 +73,12 @@ plugins:
       enable_cache: True
       size: [1000, 800]
       extensions: [".jpg", ".jpeg", ".png", ".gif"]
-  # - typedoc:
-  #     source: './docs/jaculus/lekce1/example1/@types/*.d.ts'
-  #     output_dir: 'jaculusApi'
-  #     tsconfig: './docs/jaculus/lekce1/example1/tsconfig.json'
-  # #     options: 'typedoc.json'
-  #     name: 'jaculus API documentation'
+  - typedoc:
+      source: './docs/elks/lekce1/example1/@types/*.d.ts'
+      output_dir: 'jaculusApi'
+      tsconfig: './docs/elks/lekce1/example1/tsconfig.json'
+  #     options: 'typedoc.json'
+      name: 'Jaculus API documentation'
 
 extra:
   social:
@@ -111,6 +111,7 @@ nav:
       - elks/lekce4/index.md
       - elks/lekce5/index.md
       - elks/lekce6/index.md
+      - "Jaculus API": /jaculusApi
   - Hrací kostka:
       - electronicDie/README.md
       - electronicDie/manual.md

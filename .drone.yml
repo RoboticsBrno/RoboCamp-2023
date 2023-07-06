@@ -13,6 +13,7 @@ steps:
     image: haberturdeur/robocamp2023:latest
     commands:
       - pip install -r requirements.txt
+      - npm install
       - mkdocs build
       - sshpass -e rsync -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" -a --delete ./site/  $${MACHINE_USER}@$${MACHINE}:tabor/websites/guide/
     environment:
