@@ -29,7 +29,7 @@ Jaculus je program, který nám umožní nahrávat kód do Jacula a komunikovat 
 3. Do terminálu zadáme příkaz vypsaný níže. Na `Linuxu` bude nejspíše potřeba `sudo` práva.
 
 	```bash
-	npm install -g jaculus
+	npm install -g jaculus-tools
 	```
 
 	??? tip "Háže mi to chybu"
@@ -108,6 +108,7 @@ Zde si vyzkoušíme vytvořit první projekt a nahrát jej do ELKS.
 3. Poté si jej **rozbalíme** do vytvořené složky k táboru.
 4. Spustíme VSCode a pomocí záložky `File` -> `Open Folder` vybereme složku s projektem.
 5. V levém spodním rohu vybereme :material-power-plug:`Select COM port` pro výběr portu, na kterém je ELKS připojený. Poté se nápis změní na vybraný port.
+	
 	??? tip "Mám více portů"
 		Pokud se vám v nabídce zobrazí více portů, odpojte ELKS a zjisťe, který port zmizel. Po připojení ELKS tento port vyberte.
 6. Dále zvolíme :material-eye:`Monitor`, ten slouží pro TODO
