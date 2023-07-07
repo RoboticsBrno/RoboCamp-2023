@@ -1,12 +1,12 @@
 # Lekce 6 - pole a řetězce
 
-Řetězec neboli `string` slouží k uložení textu.
+Řetězec neboli `#!ts string` slouží k uložení textu.
 
-- řetězec je vždy uzavřený do uvozovek `""` nebo <code>``</code>
+- řetězec je vždy uzavřený do uvozovek `#!ts ""` nebo <code>``</code>
     ```ts
     let str : string = "ahoj";  // vytvoří řetězec
     ```
-- řetězce můžeme spojovat pomocí `+`
+- řetězce můžeme spojovat pomocí `#!ts +`
     ```ts
     let str : string = "ahoj" + " " + "jak se máš?";  // vytvoří řetězec "ahoj jak se máš?"
 
@@ -14,7 +14,7 @@
 
     let str2 : string = "ahoj " + answer;  // ahoj dobře
 
-    //! pozor jiné uvozovky 
+    //! pozor jiné uvozovky
     let str3 : string = `ahoj ${answer}`;  // ahoj dobře
 
     let str4 : string = answer + " " + 5;  // dobře 5
@@ -58,7 +58,7 @@ Pole neboli `array` slouží k uložení více hodnot stejného typu.
     - pomocí indexu
         ```ts
         let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-        let num : number = arr[2];  // 
+        let num : number = arr[2];  //
         ```
     - indexování začíná od 0
         ```ts
@@ -69,7 +69,7 @@ Pole neboli `array` slouží k uložení více hodnot stejného typu.
         ```ts
         let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
         arr[2] = 10;  // změní hodnotu na indexu 2
-        ``` 
+        ```
 - jak zjistíme délku pole?
     ```ts
     let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
