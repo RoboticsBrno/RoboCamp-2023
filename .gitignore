@@ -165,3 +165,6 @@ assets-large
 .resize-hash
 
 node_modules/
+
+*.zip
+*.zip.hash

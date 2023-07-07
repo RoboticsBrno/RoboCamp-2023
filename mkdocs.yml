@@ -79,6 +79,11 @@ plugins:
       tsconfig: './docs/elks/lekce1/example1/tsconfig.json'
       options: 'typedoc.json'
       name: 'Jaculus API documentation'
+  - zip_folders:
+      folders:
+        - elks/lekce1/example1
+        - elks/lekce2/blank_project
+      debug: true
 
 extra:
   social:
