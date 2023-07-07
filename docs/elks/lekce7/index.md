@@ -1,45 +1,50 @@
 # Lekce 7 - ADC - joystick, potenciometry
 
-V této lekci se naučíme pracovat s ADC převodníkem a zpracovávat data, které nám dává.
+V této lekci se naučíme pracovat s ADC převodníkem a zpracovávat data, které pomocí něj získáme.
 
-ADC převodník měří napětí, a tento takzvaně analogový signál převádí na digitální, tedy číslo, v našem případě od 0-1023.
-To využijeme pro čtení dat z potenciometrů a joysticku.
+ADC používáme pro měření napětí, které je výstupem z některých senzorů.
+Předádí napětí na hodnotu v rozsahu `0-1023`, kterou pak můžeme dále zpracovávat.
+
+To využijeme pro čtení dat z **potenciometru** a **joysticku**.
 
 ## Zadání A
 
-Nejprve si napíšeme program, který nám bude číst data z potenciometru a vypisovat je do konzole.
+Nejprve si napíšeme program, který nám bude číst data z potenciometru a vypisovat je na monitoru.
 
-```ts
-import * as adc from "adc";
+??? note "Řešení"
+    ```ts
+    import * as adc from "adc";
 
-const INPUT_PIN = 10;
+    // const INPUT_PIN = 10; // pin joysticku
 
-adc.configure(INPUT_PIN); // nejdříve musíme konfigurovat pin, ze kterého chceme data číst
+    const INPUT_PIN = 2 // pin potenciometru
 
-setInterval(() => { // každých 100 ms vyčteme data a vypíšeme je do konzole
-    const value = adc.read(INPUT_PIN); // pomocí funkce read čteme data z INPUT_PIN
-    console.log(value); //vypisujeme hodnotu do konzole
-}, 100);
-```
+    adc.configure(INPUT_PIN); // nejdříve musíme konfigurovat pin, ze kterého chceme data číst
+
+    setInterval(() => { // každých 100 ms vyčteme data a vypíšeme je do konzole
+        const value = adc.read(INPUT_PIN); // pomocí funkce read čteme data z INPUT_PIN
+        console.log(value); //vypisujeme hodnotu do konzole
+    }, 100);
+    ```
 
 ## Zadání B
 
 Data už jsme vyčetli, ale většinou je budeme muset ještě upravit.
-Ve většině využití totiž nemůžeme použít číslo od 0-1023.
-Proto musíme data takzvaně namapovat na jiný číselný rozsah, k čemuž si napíšeme funkci.
+Ve většině využití totiž nemůžeme použít číslo od `0-1023`.
+Proto musíme data takzvaně přemapovat na jiný číselný rozsah, k čemuž si napíšeme funkci.
 
 ??? note "Řešení"
     ```ts
     import * as adc from "adc";
 
     // naše nová funkce, jako parametry má velikost nového rozsahu a číslo, které chceme převést
-    function mapADC(targetRange: number, num: number): number{ 
-        let result: number = (num / (1023/targetRange)); // vypočítame převod na nový rozsah
+    function mapADC(targetRange: number, num: number): number {
+        let result: number = (num / (1023 / targetRange)); // vypočítame převod na nový rozsah
         return Math.round(result); // výsledek nám často vyjde jako desetinné číslo, proto ho zaokrouhlíme
     }
     const INPUT_PIN = 10;
 
-    adc.configure(INPUT_PIN); 
+    adc.configure(INPUT_PIN);
 
     setInterval(() => {
         const value = mapADC(255, adc.read(INPUT_PIN)); // pomocí naší funkce si namapujeme data na rozsah 0-255
@@ -54,23 +59,23 @@ Napíšeme program, který bude pomocí dat z potenciometru měnit jas RGB ledky
 ??? note "Řešení"
     ```ts
     import * as adc from "adc";
-    import { Neopixel } from "neopixel";
+    import { SmartLed, LED_WS2812 } from "smartled";
+
+    const INPUT_PIN = 2;
+    const LED_PIN = 48;
+    const LED_COUNT = 1;
 
     function mapADC(targetRange: number, num: number): number{
         let result: number = (num / (1023/targetRange));
         return Math.round(result);
     }
 
-    const INPUT_PIN = 2;
-    const LED_PIN = 48;
-    const LED_COUNT = 1;
-
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
     adc.configure(INPUT_PIN);
-    const ledStrip = new Neopixel(LED_PIN, LED_COUNT);
 
     setInterval(() => {
         const value = mapADC(255, adc.read(INPUT_PIN));
-        ledStrip.set(0, {r: value, g: 0, b:0})
+        ledStrip.set(0, {r: value, g: 0, b:0}) // nastavíme intenzitu červené barvy na hodnotu z potenciometru (0-255)
         ledStrip.show();
     }, 10);
     ```
@@ -82,28 +87,29 @@ Napíšeme program, který bude číst obě osy joysticku, jedna osa bude ovlád
 ??? note "Řešení"
     ```ts
     import * as adc from "adc";
-    import { SmartLed } from "smartled";
-    import * as colors from "./colors.js"
-
-    function mapADC(targetRange: number, num: number): number{
-        let result: number = (num / (1023/targetRange));
-        return Math.round(result);
-    }
+    import { SmartLed, LED_WS2812 } from "smartled";
+    import * as colors from "./libs/colors.js";
 
     const JOY_X = 10;
     const JOY_Y = 9;
     const LED_PIN = 21;
     const LED_COUNT = 8;
 
+    function mapADC(rangeFrom: number, rangeTo: number, num: number): number {
+        let result: number = (num / (rangeFrom / rangeTo));
+        return Math.round(result);
+    }
+
     adc.configure(JOY_X);
     adc.configure(JOY_Y);
-    const ledStrip = new SmartLed(LED_PIN, LED_COUNT);
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);
 
     setInterval(() => {
-        const lenght = mapADC(7, adc.read(JOY_X));
-        const ledColor = mapADC(360, adc.read(JOY_Y));
-        ledStrip.clear();
-        for (let i: number = 0; i <= lenght; i++){
+        const lenght = mapADC(1023, 7, adc.read(JOY_X)); // nastaví délku na hodnotu z potenciometru (0-7)
+        const ledColor = mapADC(1023, 360, adc.read(JOY_Y)); // nastaví barvu na hodnotu z potenciometru (0-360)
+        console.log(`Lenght: ${lenght}, Color: ${ledColor}`);
+        ledStrip.clear(); // vymaže pásek
+        for (let i: number = 0; i <= lenght; i++) { // nastavíme barvu na všechny ledky v rozsahu délky
             ledStrip.set(i, colors.rainbow(ledColor))
         }
         ledStrip.show();
@@ -113,8 +119,8 @@ Napíšeme program, který bude číst obě osy joysticku, jedna osa bude ovlád
 ## Výstupní úkol V1
 
 Napíšeme program, který bude pomocí dat ze dvou potenciometrů měnit pozici svítící ledky na LED pásku a její barvu.
-Využijeme funkci colors.rainbow(). 
-<!-- 
+Využijeme funkci `#!ts colors.rainbow()`.
+<!--
 ??? note "Řešení"
 ```ts
 import * as adc from "adc";

@@ -1,22 +1,33 @@
-/* Barva je jednoduchá trojice červené, zelené, a modré složky */
+/**
+ * Barva je jednoduchá trojice červené, zelené, a modré složky
+ * - R: červená (rozsah 0-255)
+ * - G: zelená (rozsah 0-255)
+ * - B: modrá (rozsah 0-255)
+ */
 interface Rgb {
     r: number;
     g: number;
     b: number;
 }
 
-/* Alternativní způsob, jak vyjádřit barvu, je HSL:
-    - Hue: odstín (rozsah 0-360)
-    - Saturation: sytost barev (rozsah 0-1)
-    - Lightness: světlost (rozsah 0-1)
-*/
+
+/**
+ * Alternativní způsob, jak vyjádřit barvu, je HSL:
+ * - Hue: odstín (rozsah 0-360)
+ * - Saturation: sytost barev (rozsah 0-1)
+ * - Lightness: světlost (rozsah 0-1)
+ */
 interface Hsl {
     h: number;
     s: number;
     l: number;
 }
 
-/* Mezi jednotlivými reprezentacemi lze převádět: */
+/**
+ * Mezi jednotlivými reprezentacemi lze převádět
+ * @param hsl {Number} Hue (0-360), Saturation (0-1), Lightness (0-1)
+ * @returns {Rgb} Red (0-255), Green (0-255), Blue (0-255)
+ */
 export function hsl_to_rbg( hsl: Hsl ) : Rgb {
     const chroma = ( 1 - Math.abs( 2 * hsl.l - 1 ) * hsl.s );
     const hue = hsl.h / 60;
@@ -44,10 +55,17 @@ export function hsl_to_rbg( hsl: Hsl ) : Rgb {
     return color;
 }
 
-/* Funkce rainbow zafixuje sytost a světlost, a prochází barvami */
-export function rainbow( hue: number ) : Rgb {
+/**
+ * Funkce rainbow zafixuje sytost a světlost, a prochází barvami
+ * @param hue (0-360)
+ * @param brightness (0-100) - 50 je defaultní hodnota
+ * @returns {Rgb}
+ */
+export function rainbow( hue: number, brightness: number = 50) : Rgb {
     hue = Math.min( hue, 360 ); // Zajistíme, že zadaná hodnota není mimo rozsah
-    return hsl_to_rbg( { h: hue, s: 1, l: 0.5 } );
+    // fix range to 0-100
+    let brightness_mapped = Math.min(Math.max(brightness, 0), 100);
+    return hsl_to_rbg( { h: hue, s: 1, l: brightness_mapped / 100 } );
 }
 
 /* Základní barvy pro LED pásky*/
