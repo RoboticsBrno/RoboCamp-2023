@@ -1,91 +1,163 @@
-# Lekce 7 - pole
+# Lekce 6 - ADC - joystick, potenciometry
 
-Pole neboli `#!ts array` slouží k uložení více hodnot stejného typu.
-Hodnoty jsou uloženy za sebou, můžeme je do pole přidávat, odebírat, a přistupovat podle indexu.
+V této lekci se naučíme pracovat s ADC převodníkem a zpracovávat data, které pomocí něj získáme.
 
-- Pole vytvoříme pomocí hranatých závorek
-    ```ts
-    let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    ```
-- K jednotlivým prvkům se dostaneme pomocí indexu (pořadí v poli) v hranatých závorkách
-    - Indexování začíná od 0: první prvek je na indexu 0
-        ```ts
-        let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-        let num : number = arr[0];  // do proměnné num uložíme hodnotu na indexu 0 (tedy 1.)
-        ```
-    - Můžeme přistupovat na libovolné místo v poli:
-        ```ts
-        let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-        let num : number = arr[2];  // do proměnné num uložíme hodnotu na indexu 2 (tedy 3.)
-        ```
-    - Index můžeme použít i pro změnu hodnoty
-        ```ts
-        let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-        arr[2] = 10;  // změní hodnotu na indexu 2 z 3 na 10: výsledné pole bude [1, 2, 10, 4, 5]
-        ```
-- Délku pole zjistíme pomocí funkce 
-    ```ts
-    let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    let length : number = arr.length(); // hodnota length bude 5
-    ```
-- Hodnotu na konec pole přidáme pomocí funkce `push`
-    ```ts
-    let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    arr.push(6);  // přidá hodnotu na konec: výsledné pole bude [1, 2, 3, 4, 5, 6]
-    ```
+ADC používáme pro měření napětí, které je výstupem z některých senzorů.
+Převádí napětí na hodnotu v rozsahu `0-1023`, kterou pak můžeme dále zpracovávat.
 
-- Hodnotu z konce pole odebereme pomocí funce `pop`
-    ```ts
-    let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    let num : number = arr.pop();  // odebere hodnotu z konce: výsledné pole bude [1, 2, 3, 4]
-    ```
+To využijeme pro čtení dat z **potenciometru** a **joysticku**.
 
 ## Zadání A
 
-Opět navážeme na předchozí lekce, a budeme do pole ukládat hodnoty z potenciometru.
-Vytvoříme si pole, které při stisku vybraného tlačítka přidá aktuální hodnotu z `POT 0`.
-Druhé tlačítko z tohoto pole poslední hodnotu smaže.
-Stav pole si můžeme po každé změně vypsat pomocí `#!ts console.log(pole)`.
+Nejprve si napíšeme program, který nám bude číst data z potenciometru a vypisovat je na monitoru.
 
 ??? note "Řešení"
     ```ts
-    import { SmartLed, LED_WS2812 } from "smartled";
-    import * as colors from "./libs/colors.js";
     import * as adc from "adc";
-    import * as gpio from "gpio";
 
-    const INPUT_PIN : number = 2;
-    const LED_PIN : number = 21;
-    const LED_COUNT : number = 8;
-    const LBTN_PIN : number = 18;
-    const MBTN_PIN : number = 16;
+    // const INPUT_PIN = 10; // pin joysticku
 
-    const ledStrip = new SmartLed(LED_PIN, LED_COUNT); // Nastavíme LED pásek
-    gpio.pinMode(LBTN_PIN, gpio.PinMode.INPUT); // Nastavíme levé tlačítko
-    gpio.pinMode(MBTN_PIN, gpio.PinMode.INPUT); // Nastavíme střední tlačítko
-    adc.configure(INPUT_PIN); // Nastavíme vstup z POT0
+    const INPUT_PIN = 2 // pin potenciometru
 
-    let arr : number[] = [];
+    adc.configure(INPUT_PIN); // nejdříve musíme konfigurovat pin, ze kterého chceme data číst
 
-    gpio.on("falling", LBTN_PIN, () => { // Při stisknutí levého tlačítka
-        arr.push(adc.read(INPUT_PIN)); // Přidáme do pole naměřenou hodnotu
-        console.log(arr); // Vypíšeme nový stav
-    });
-    gpio.on("falling", MBTN_PIN, () => { // Při stisknutí středního tlačítka
-        arr.pop(); // Odebereme z pole poslední hodnotu
-        console.log(arr); // Vypíšeme nový stav
-    });
+    setInterval(() => { // každých 100 ms vyčteme data a vypíšeme je do konzole
+        const value = adc.read(INPUT_PIN); // pomocí funkce read čteme data z INPUT_PIN
+        console.log(value); //vypisujeme hodnotu do konzole
+    }, 100);
     ```
 
-## Výchozí úkol V1
+## Zadání B
 
-Tentokrát si vytvoříme o něco rozsáhlejší program, který naváže na předchozí úkol.
-Vytvoříme si pole čísel, do kterého pomocí prvního tlačítka načteme naměřené hodnoty z potenciometru.
-Při stisku prvního tlačítka kontrolujeme, jestli už pole má délku 8.
-Pokud už je délka 8, další hodnoty nepřidáváme a stisk tlačítka pole nezmění.
+Data už jsme vyčetli, ale většinou je budeme muset ještě upravit.
+Ve většině využití totiž nemůžeme použít číslo od `0-1023`.
+Proto musíme data takzvaně přemapovat na jiný číselný rozsah, k čemuž si napíšeme funkci.
 
-Druhé tlačítko smaže poslední prvek -- zde kontrolujeme, jestli tam nějaký prvek je.
+??? note "Řešení"
+    ```ts
+    import * as adc from "adc";
 
-Třetí tlačítko na základě hodnot v poli rozsvítí LED pásek podle naměřených hodnot.
-Všechny hodnoty v poli převedeme na rozsah `colors.rainbow` (tedy 0-360) a rozsvítíme LED
-na odpovídajícím indexu naměřenou hodnotou.
+    // naše nová funkce, jako parametry má velikost nového rozsahu a číslo, které chceme převést
+    function mapADC(targetRange: number, num: number): number {
+        let result: number = (num / (1023 / targetRange)); // vypočítame převod na nový rozsah
+        return Math.round(result); // výsledek nám často vyjde jako desetinné číslo, proto ho zaokrouhlíme
+    }
+    const INPUT_PIN = 10;
+
+    adc.configure(INPUT_PIN);
+
+    setInterval(() => {
+        const value = mapADC(255, adc.read(INPUT_PIN)); // pomocí naší funkce si namapujeme data na rozsah 0-255
+        console.log(value);
+    }, 100);
+    ```
+
+## Zadání C
+
+Napíšeme program, který bude pomocí dat z potenciometru měnit jas RGB ledky na ESP.
+
+??? note "Řešení"
+    ```ts
+    import * as adc from "adc";
+    import { SmartLed, LED_WS2812 } from "smartled";
+
+    const INPUT_PIN = 2;
+    const LED_PIN = 48;
+    const LED_COUNT = 1;
+
+    function mapADC(targetRange: number, num: number): number{
+        let result: number = (num / (1023/targetRange));
+        return Math.round(result);
+    }
+
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
+    adc.configure(INPUT_PIN);
+
+    setInterval(() => {
+        const value = mapADC(255, adc.read(INPUT_PIN));
+        ledStrip.set(0, {r: value, g: 0, b:0}) // nastavíme intenzitu červené barvy na hodnotu z potenciometru (0-255)
+        ledStrip.show();
+    }, 10);
+    ```
+
+## Zadání D
+
+Napíšeme program, který bude číst obě osy joysticku, jedna osa bude ovládat počet svítících ledek na LED pásku, druhá osa jejich barvu.
+
+??? note "Řešení"
+    ```ts
+    import * as adc from "adc";
+    import { SmartLed, LED_WS2812 } from "smartled";
+    import * as colors from "./libs/colors.js";
+
+    const JOY_X = 10;
+    const JOY_Y = 9;
+    const LED_PIN = 21;
+    const LED_COUNT = 8;
+
+    function mapADC(rangeFrom: number, rangeTo: number, num: number): number {
+        let result: number = (num / (rangeFrom / rangeTo));
+        return Math.round(result);
+    }
+
+    adc.configure(JOY_X);
+    adc.configure(JOY_Y);
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);
+
+    setInterval(() => {
+        const lenght = mapADC(1023, 7, adc.read(JOY_X)); // nastaví délku na hodnotu z potenciometru (0-7)
+        const ledColor = mapADC(1023, 360, adc.read(JOY_Y)); // nastaví barvu na hodnotu z potenciometru (0-360)
+        console.log(`Lenght: ${lenght}, Color: ${ledColor}`);
+        ledStrip.clear(); // vymaže pásek
+        for (let i: number = 0; i <= lenght; i++) { // nastavíme barvu na všechny ledky v rozsahu délky
+            ledStrip.set(i, colors.rainbow(ledColor))
+        }
+        ledStrip.show();
+    }, 10);
+    ```
+
+## Výstupní úkol V1
+
+Napíšeme program, který bude pomocí dat ze dvou potenciometrů měnit pozici svítící ledky na LED pásku a její barvu.
+Využijeme funkci `#!ts colors.rainbow()`.
+<!--
+??? note "Řešení"
+```ts
+import * as adc from "adc";
+import { smartled } from "smartled";
+import * as colors from "./colors.js"
+
+function mapADC(targetRange: number, num: number): number{
+    let result: number = (num / (1023/targetRange));
+    return Math.round(result);
+}
+
+const POT0 = 2;
+const POT1 = 1;
+const LED_PIN = 21;
+const LED_COUNT = 8;
+
+adc.configure(POT0);
+adc.configure(POT1);
+const ledStrip = new smartled(LED_PIN, LED_COUNT);
+
+setInterval(() => {
+    const ledPos = mapADC(7, adc.read(POT0));
+    const ledColor = mapADC(360, adc.read(POT1));
+    ledStrip.clear();
+    ledStrip.set(ledPos, colors.rainbow(ledColor))
+    ledStrip.show();
+}, 10);
+``` -->
+
+
+
+
+
+
+
+
+
+
+
+
