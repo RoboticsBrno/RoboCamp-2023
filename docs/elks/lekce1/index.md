@@ -104,11 +104,11 @@ Zde si vyzkoušíme vytvořit první projekt a nahrát jej do ELKS.
 
 
 1. V prvním kroku si na počítači nachystáme složku `RoboCamp-2023` do které si budeme ukládat veškeré projekty.
-2. Dále si [stáhneme zip](ZIP) soubor s prvním projektem.
+2. Dále si [stáhneme zip](./example1.zip) soubor s prvním projektem.
 3. Poté si jej **rozbalíme** do vytvořené složky k táboru.
 4. Spustíme VSCode a pomocí záložky `File` -> `Open Folder` vybereme složku s projektem.
 5. V levém spodním rohu vybereme :material-power-plug:`Select COM port` pro výběr portu, na kterém je ELKS připojený. Poté se nápis změní na vybraný port.
-	
+
 	??? tip "Mám více portů"
 		Pokud se vám v nabídce zobrazí více portů, odpojte ELKS a zjisťe, který port zmizel. Po připojení ELKS tento port vyberte.
 6. Dále zvolíme :material-eye:`Monitor`, ten slouží pro komunikaci se zařízením.
