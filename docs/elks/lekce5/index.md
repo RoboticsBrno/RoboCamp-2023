@@ -98,5 +98,3 @@ nastavím blok ledek mezi X a Y
 ## Zadání výstupního úkolu V1
 
 funkce gradient - začátek a konec v RGB - objekt
-
-TOM Ř

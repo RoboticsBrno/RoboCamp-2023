@@ -63,7 +63,7 @@ Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na E
 
 ## Zadání C
 
-Dvakrát za sekundu vypíšeme stav zmáčnutí tlačítka (0 nebo 1). Opakování dosáhneme pomocí `setInterval()`.
+Dvakrát za sekundu vypíšeme stav zmáčknutí tlačítka (0 nebo 1). Opakování dosáhneme pomocí `setInterval()`.
 
 ??? note "Řešení"
     ```ts
