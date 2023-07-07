@@ -1,8 +1,9 @@
 import { Neopixel } from "neopixel"; // importování knihovny Neopixel
+import * as colors from "./libs/colors.js";
 
 const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
 
-ledStrip.set(0, {r: 255, g: 0, b: 0}); // nastaví barvu LED na ESP32 na červenou
+ledStrip.set(0, colors.red); // nastaví barvu LED na ESP32 na červenou
 ledStrip.show(); // zobrazí nastavení na LED
 
 setInterval(() => { // pravidelně vyvolává událost
