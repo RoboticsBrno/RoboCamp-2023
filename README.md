@@ -2,7 +2,6 @@
 
 ## Vítej na stránkách Robotického tábora 2023
 
-Tady budou obrázky!
 <!-- <div align="center">
     <table>
         <tr>
