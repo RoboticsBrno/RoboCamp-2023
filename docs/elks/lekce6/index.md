@@ -26,7 +26,7 @@
 ??? info "Ukázka práce s řetězcem s readline"
     ```ts
     import { stdout } from "stdio";
-    import { readline } from "./readline.js";
+    import { readline } from "./libs/readline.js";
 
     //* řetězce
     async function echo() {
@@ -48,7 +48,7 @@
     echo();  // zavolá funkci echo
     ```
 
-Pole neboli `array` slouží k uložení více hodnot stejného typu.
+Pole neboli `#!ts array` slouží k uložení více hodnot stejného typu.
 
 - pole vytvoříme pomocí hranatých závorek
     ```ts
@@ -58,17 +58,17 @@ Pole neboli `array` slouží k uložení více hodnot stejného typu.
     - pomocí indexu
         ```ts
         let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-        let num : number = arr[2];  //
+        let num : number = arr[2];  // do proměnné num uložíme hodnotu na indexu 2 -> 3
         ```
     - indexování začíná od 0
         ```ts
         let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-        let num : number = arr[0];  // do proměnné num uložíme hodnotu na indexu 0
+        let num : number = arr[0];  // do proměnné num uložíme hodnotu na indexu 0 -> 1
         ```
     - index můžeme použít i pro změnu hodnoty
         ```ts
         let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-        arr[2] = 10;  // změní hodnotu na indexu 2
+        arr[2] = 10;  // změní hodnotu na indexu 2 z 3 na 10
         ```
 - jak zjistíme délku pole?
     ```ts
@@ -78,25 +78,26 @@ Pole neboli `array` slouží k uložení více hodnot stejného typu.
     ```
 - jak přidáme hodnotu na konec pole?
     ```ts
-
     let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    arr.push(6);  // přidá hodnotu na konec pole
+    arr.push(6);  // přidá hodnotu na konec pole [1, 2, 3, 4, 5, 6]
     ```
+
 - jak odebíráme hodnotu z konce pole?
     ```ts
-
     let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    let num : number = arr.pop();  // odebere hodnotu z konce pole
+    let num : number = arr.pop();  // odebere hodnotu z konce pole [1, 2, 3, 4]
     ```
+
 - jak přidáme hodnotu na začátek pole?
-    ```ts
 
+    ```ts
     let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    arr.unshift(0);  // přidá hodnotu na začátek pole
+    arr.unshift(0);  // přidá hodnotu na začátek pole [0, 1, 2, 3, 4, 5]
     ```
-- jak odebíráme hodnotu z začátku pole?
-    ```ts
 
+- jak odebíráme hodnotu z začátku pole?
+
+    ```ts
     let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    let num : number = arr.shift();  // odebere hodnotu z začátku pole
+    let num : number = arr.shift();  // odebere hodnotu z začátku pole [2, 3, 4, 5]
     ```
