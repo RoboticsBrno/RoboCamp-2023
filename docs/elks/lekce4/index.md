@@ -15,35 +15,46 @@ for(let i: number = 0; i < 3; i++) {
 ```
 Do kulatých závorek píšeme tři věci:
 
-- proměnou s její výchozí hodnotou
+- řídící proměnnou s její výchozí hodnotou
 - výraz který určuje počet opakování 
-- nakonec jednoduchou operaci která se provede při každém průchodu cyklem jako poslední operace.
+- nakonec jednoduchou operaci která se provede při každém průchodu cyklem jako poslední operace
 
-Tedy zakládáme proměnou ``` i ``` s výchozí hodnotou ``` 0 ```, následně definujeme výraz ``` i < 3 ``` a na konci cyklu zvýšíme ``` i ``` o jedna.
+Tedy zakládáme proměnnou ``` i ``` s výchozí hodnotou ``` 0 ```, následně definujeme výraz ``` i < 3 ``` a na konci cyklu zvýšíme ``` i ``` o jedna.
 Při prvním průchodu bude tedy ``` i = 0 ``` při druhém ``` i = 1 ``` a při třetím ``` i = 2 ``` při dalším zvyšování by platilo ``` i = 3 ``` tam ale už nebude pravdivý výraz ``` i < 3 ``` a cyklus se tedy ukončí.
 Do složených závorek píšeme vykonávaný kód.
 
 ## Zadání A
-Ve spojení se znalostmi z minulých lekcí napište program, který po stisku tlačítka vypíše čísla 0 až 9, vždy na samostatný řádek. 
+Ve spojení se znalostmi z minulých lekcí napište program, který po stisku tlačítka vypíše čísla 0 až 9 (pomocí `console.log(cislo)`), vždy na samostatný řádek. 
 Kod napište tak aby bylo jednoduché ho upravit na výpis jakéhokoli jiného intervalu, např. 0 až 99 nebo 10 až 19.
 
-Příklad řešení:
-```ts
-for(let i: number = 0; i < 3; i++) {
-  console.log(i);
-}
-```
+??? note "Řešení"
+    ```ts
+    import * as gpio from "gpio";
+
+    const BTN_PIN = 0;
+
+    gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT_PULLUP); // nastaví pin nula jako vstup
+
+    gpio.on("falling", BTN_PIN, () => { // událost, která proběhne při stisknutí tlačítka připojeného na pin 0
+        for(let i: number = 0; i < 9; i++) {
+            console.log(i);
+        }
+    });
+    
+    ```
 
 ## Cyklus while
 Pokud nevíme kolikrát se má cyklus opakovat použijeme místo cyklu ``` for ``` cyklus ``` while ```.
+
 Do kulatých závorek teď píšeme jen výraz který určuje jestli se cyklus vykoná znovu nebo ne. 
-Tedy pokud budeme chtít třeba vykonávat nějaký kód dokud máme stisknuté tlačítko uděláme to takto:
-<!-- ```ts
-while (buttonIsPressed()) {
+Kód, který se má vykonávat, dokud platí podmínka, vypadá takto:
+```ts
+while (condition) {
 	// náš kód
 }
-``` -->
+```
 V podobných případech se nám bude často hodit funkce `await sleep(t)`, která zařídí že kód posečká zadaný čas (zadaný čas je v ms neboli v tisícinách sekundy).
+
 
 ## Zadání B
 Napište kód který bude blikat ledkou pokud je stisknuté tlačítko. 
