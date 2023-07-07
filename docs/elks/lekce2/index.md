@@ -8,21 +8,21 @@ Jelikož je TypeScript (JavaScript) imperativní, vykonávájí se příkazy v t
 
 ## Zadání A
 
-Rozsvítíme RGB LED na ESP32 (GPIO 48) jednou barvou (například červenou).
+Rozsvítíme RGB LED na ESP32 (`GPIO 48`) jednou barvou (například červenou).
 
 Na začátku tohoto úkolu si stáhneme nový [zip](./blank_project.zip) soubor obsahující prázdný projekt. Po stažení složku rozbalíme a otevřeme ve Visual Studio Code.
 
 ??? note "Řešení"
     ```ts
-    import { Neopixel } from "neopixel";
-    import * as Colors from "./libs/colors.js"
+    import { SmartLed, LED_WS2812 } from "smartled";
+    import * as colors from "./libs/colors.js"
 
     const LED_PIN = 48;
     const LED_COUNT = 1;
 
-    const ledStrip = new Neopixel(LED_PIN, LED_COUNT);  // připojí pásek na pin 48, s 1 ledkou
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
-    ledStrip.set(0, Colors.red); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
+    ledStrip.set(0, colors.red); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
     ledStrip.show(); // zobrazí nastavení na LED
     ```
 
@@ -34,29 +34,29 @@ Po zaznamenání události se vykoná kód, který je k ní přiřazen.¨
 
 ## Zadání B
 
-Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na ESP32 (GPIO 48) a při puštění ho opět zhasneme.
+Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na ESP32 (`GPIO 48`) a při puštění ho opět zhasneme.
 
 ??? note "Řešení"
     ```ts
     import * as gpio from "gpio";
-    import { Neopixel } from "neopixel";
-    import * as Colors from "./libs/colors.js"
+    import { SmartLed, LED_WS2812 } from "smartled";
+    import * as colors from "./libs/colors.js"
 
     const LED_PIN = 48;
     const LED_COUNT = 1;
     const BTN_PIN = 0;
 
-    const ledStrip = new Neopixel(LED_PIN, LED_COUNT);  // připojí pásek na pin 48, s 1 ledkou
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
     gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
 
     gpio.on("falling", BTN_PIN, () => { // událost, která proběhne při stisknutí tlačítka připojeného na pin 0
-        ledStrip.set(0, Colors.red); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
+        ledStrip.set(0, colors.red); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
         ledStrip.show(); // zobrazí nastavení na LED
     });
 
     gpio.on("rising", BTN_PIN, () => { // událost, která proběhne při puštění tlačítka připojeného na pin 0
-        ledStrip.set(0, Colors.off); // nastaví nultou LED na zhasnutou (RGB 0 0 0)
+        ledStrip.set(0, colors.off); // nastaví nultou LED na zhasnutou (RGB 0 0 0)
         ledStrip.show(); // zobrazí nastavení na LED
     });
     ```
@@ -84,4 +84,4 @@ Při stisknutí tlačítka (GPIO 0) vypíšeme pozdrav.
 
 ## Zadání výstupního úkolu V2
 
-Při stisknutí tlačítka (GPIO 0) rozsvítíme RGB LED na ESP32 (GPIO 48) jednou barvou a při puštění barvu změníme na jinou.
+Při stisknutí tlačítka (GPIO 0) rozsvítíme RGB LED na ESP32 (`GPIO 48`) jednou barvou a při puštění barvu změníme na jinou.

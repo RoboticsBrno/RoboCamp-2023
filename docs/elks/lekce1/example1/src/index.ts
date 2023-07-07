@@ -1,9 +1,9 @@
-import { Neopixel } from "neopixel"; // importování knihovny Neopixel
-import * as Colors from "./libs/colors.js"
+import { SmartLed, LED_WS2812 } from "smartled";
+import * as colors from "./libs/colors.js"
 
-const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+const ledStrip = new SmartLed(48, 1, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
-ledStrip.set(0, Colors.green); // nastaví barvu LED na ESP32 na červenou
+ledStrip.set(0, colors.green); // nastaví barvu LED na ESP32 na červenou
 ledStrip.show(); // zobrazí nastavení na LED
 
 setInterval(() => { // pravidelně vyvolává událost

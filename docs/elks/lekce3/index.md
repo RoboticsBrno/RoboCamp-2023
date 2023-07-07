@@ -59,9 +59,9 @@ Pokud se chceme zachovat dvěma různými způsoby, použijeme konstrukci
 
 ```ts
 if (podmínka) {
-  a 
-} else { 
-  b 
+  a
+} else {
+  b
 }
 ```
 
@@ -79,31 +79,45 @@ Tyto barvy mícháme v různých poměrech od 0 do 255, a vytváříme tak různ
 Ve výchozím stavu je LED vypnutá (hodnoty `(0, 0, 0)`), a nejsilnější bílé světlo získáme použitím všech
 barev na maximum (hodnoty `(255, 255, 255)`).
 
+Druhou variantou je použití předdefinovaných barev, které jsou v souboru `colors.ts`. Příklad použití obou variant:
+
+  ```ts
+  ledStrip.set(0, colors.off); // Vypne LEDku pomocí předdefinované barvy
+  ledStrip.set(0, {r: 255, g: 0, b: 0}); // Vypne LEDku pomocí vlastní barvy
+
+  ledStrip.set(0, colors.green); // Rozsvítí LEDku červeně pomocí předdefinované barvy
+  ledStrip.set(0, {r: 0, g: 255, b: 0}); // Rozsvítí LEDku červeně pomocí vlastní barvy
+  ```
+
+
 ## Zadání A
 
 Pomocí jedné proměnné se stavem a podmínky každou sekundu buď rozsvítíme, nebo zhasneme LED na desce.
 
 ??? note "Řešení"
-  ```ts
-  import * from "./colors.js"
-  import { Neopixel } from "neopixel";
+    ```ts
+    import { SmartLed, LED_WS2812 } from "smartled";
+    import * as colors from "./libs/colors.js"
 
-  const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+    const LED_PIN = 48;
+    const LED_COUNT = 1;
 
-  let on : bool = false; // LED je vypnutá
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
-  setInterval(() => {
-    if(on){ // Pokud je LED zapnutá
-      ledStrip.set(0, colors.off); // Vypneme LED
-      ledStrip.show(); // Zobrazíme změny
-      on = false;
-    } else {
-      ledStrip.set(0, colors.green); // Rozsvítíme LED zelenou barvou
-      ledStrip.show(); // Zobrazíme změny
-      on = true
-    }
-  }, 1000);
-  ```
+    let on: boolean = false; // LED je vypnutá
+
+    setInterval(() => {
+      if (on) { // Pokud je LED zapnutá
+        ledStrip.set(0, colors.off); // Vypneme LED
+        ledStrip.show(); // Zobrazíme změny
+        on = false;
+      } else {
+        ledStrip.set(0, colors.green); // Rozsvítíme LED zelenou barvou
+        ledStrip.show(); // Zobrazíme změny
+        on = true
+      }
+    }, 1000);
+    ```
 
 ## Zadání B
 
@@ -112,62 +126,73 @@ a na základě toho vrátí barvu na barevném spektru. V daném intervalu (nap�
 opět nastavit na `0`.
 
 ??? note "Řešení"
-  ```ts
-  import * from "./colors.js"
-  import { Neopixel } from "neopixel";
+    ```ts
+    import { SmartLed, LED_WS2812 } from "smartled";
+    import * as colors from "./libs/colors.js"
 
-  const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+    const LED_PIN = 48;
+    const LED_COUNT = 1;
 
-  let shade = 0; // Držíme si stav s aktuálním odstínem
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
-  setInterval(() => {
-      ledStrip.set(0, colors.rainbow(shade)); // Nastavíme LED na aktuální odstín
-      ledStrip.show(); // Zobrazíme vybranou barvu
-      shade = shade + 1; // Zvedneme odstín
-      if (shade > 360) {
-          shade = 0;
-      }
-  }, 100);
-  ```
+    let shade = 0; // Držíme si stav s aktuálním odstínem
+
+    setInterval(() => {
+        ledStrip.set(0, colors.rainbow(shade)); // Nastavíme LED na aktuální odstín
+        ledStrip.show(); // Zobrazíme vybranou barvu
+        shade = shade + 1; // Zvedneme odstín (lze i shade += 1)
+        if (shade > 360) {
+            shade = 0;
+        }
+    }, 100);
+    ```
 
 ## Zadání C
 
 Tentokrát budeme reagovat na stisk tlačítka.
-Do desky si zapojíme pásku 8 světel, a vybranou barvou je budeme rozsvěcet.
+Do desky si zapojíme pásku 8 inteligentních ledek, a vybranou barvou je budeme rozsvěcet.
 Po stisku tlačítka zhasneme aktuální LEDku, a rozsvítíme tu další.
 Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme opět první LED.
 
 ??? note "Řešení"
-  ```ts
-  import * as colors from "./colors.js"
-  import { Neopixel, Rgb } from "neopixel";
-  import * as gpio from "gpio";
+    ```ts
+    import { SmartLed, Rgb, LED_WS2812 } from "smartled";
+    import * as colors from "./libs/colors.js"
+    import * as gpio from "gpio";
 
-  gpio.pinMode(0, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
-  const ledStrip = new Neopixel(14, 8);  // Připojíme LED pásek na pin 14
+    const LED_PIN = 48;
+    const LED_COUNT = 1;
 
-  let index : number = 0;
-  let color : Rgb = colors.light_blue; // Vybereme si barvu
-  ledStrip.set(0, color); // Rozsvítíme první LED
+    gpio.pinMode(0, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
-  gpio.on("falling", 0, () => {
-      ledStrip.set(index, colors.off); // Vypneme předchozí LED
-      index = index + 1; // Zvedneme index
-      if(index > 7){ // Pokud jsme mimo rozsah pásku, vrátíme se na začátek
-          index = 0;
-      }
-      ledStrip.set(index, color); // Nastavíme aktuální LED
-      ledStrip.show();
-  });
-  ```
+    let index : number = 0;
+    let color : Rgb = colors.light_blue; // Vybereme si barvu
+    ledStrip.set(0, color); // Nastavíme LED na aktuální odstín
+    ledStrip.show(); // Zobrazíme změny
+
+    gpio.on("falling", 0, () => {
+        ledStrip.set(index, colors.off); // Vypneme předchozí LED
+        index = index + 1; // Zvedneme index (lze i index += 1)
+        if(index > 7){ // Pokud jsme mimo rozsah pásku, vrátíme se na začátek
+            index = 0;
+        }
+        ledStrip.set(index, color); // Nastavíme aktuální LED
+        ledStrip.show();  // Zobrazíme změny
+    });
+    ```
 
 ## Výstupní úkol V1
 
 Knightrider: svítící LED "běhá" s danou rychlostí od začátku do konce pásky.
 Jakmile dorazí na konec, změní směr, a posouvá se opačným směrem.
 
-## Pro dobrovolníky
+V našem případě bude stačit, když se bude pohybovat pouze jedna LEDka.
 
-- Jezdec může při běhu měnit barvy (např. pomocí funkce rainbow)
+![Knightrider](./assets/knight-rider.gif)
 
-- Jezdec může zanechávat stopu: barva nezmizí hned, ale až s odstupem. Barva může "mizet" postupně: intenzita stopy se časem snižuje.
+!!! tip "Pro dobrovolníky"
+
+    - Jezdec může při běhu měnit barvy (např. pomocí funkce `rainbow`)
+
+    - Jezdec může zanechávat stopu: barva nezmizí hned, ale až s odstupem. Barva může "mizet" postupně: intenzita stopy se časem snižuje.

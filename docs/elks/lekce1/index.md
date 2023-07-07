@@ -151,10 +151,32 @@ Ve zdrojovém kódu jsou komentáře (`// tohle je komentář`), které nám pop
 	??? note "Řešení"
 		```ts
 		...
-		}, 500); // tady jsem změnil rychlost vypisování
+		setInterval(() => { /* moj kod */ }, 500); // čas opakování se udává v milisekundách (1000 ms je 1 sekunda)
 		...
 		```
+
 4. Upravíme si barvu.
+
+	??? note "Řešení"
+		```ts
+		...
+		ledStrip.set(0, colors.red); // nastaví barvu LED na ESP32 na červenou
+		...
+		```
+
+		Barvy:
+
+		- `red`
+		- `orange`
+		- `yellow`
+		- `green`
+		- `light_blue`
+		- `blue`
+		- `purple`
+		- `pink`
+		- `white`
+		- `off`
+
 5. Upravímes si číselné proměnné na pojmenované konstanty.
 
 	??? note "Pojmenované konstanty"
@@ -163,6 +185,6 @@ Ve zdrojovém kódu jsou komentáře (`// tohle je komentář`), které nám pop
 		const LED_PIN = 48;
 		const LED_COUNT = 1;
 
-		const ledStrip = new Neopixel(LED_PIN, LED_COUNT);  // připojí pásek na pin 48, s 1 ledkou
+		const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 		...
 		```
