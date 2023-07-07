@@ -28,7 +28,7 @@ Na začátku tohoto úkolu si stáhneme nový [zip]() soubor obsahující prázd
 
 Událost, která je programem rozpoznávána (například stisknutí nebo puštění tlačítka nebo uplynutí nějakého času).
 
-Po zaznamenání události se vykoná kód, který je k ní přiřazen.¨
+Po zaznamenání události se vykoná kód, který je k ní přiřazen.
 
 ## Zadání B
 

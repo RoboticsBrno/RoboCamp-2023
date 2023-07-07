@@ -90,7 +90,10 @@ Pomocí jedné proměnné se stavem a podmínky každou sekundu buď rozsvítím
     import * from "./colors.js"
     import { Neopixel } from "neopixel";
 
-    const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+    const LED_PIN = 48;
+    const LED_COUNT = 1;
+
+    const ledStrip = new Neopixel(LED_PIN, LED_COUNT);  // připojí pásek na pin 48, s 1 ledkou
 
     let on : bool = false; // LED je vypnutá
 
@@ -118,7 +121,10 @@ Pokud naše číslo přesáhne hodnotu `360`, musíme ho opět nastavit na `0`.
     import * from "./colors.js"
     import { Neopixel } from "neopixel";
 
-    const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+    const LED_PIN = 48;
+    const LED_COUNT = 1;
+
+    const ledStrip = new Neopixel(LED_PIN, LED_COUNT);  // připojí pásek na pin 48, s 1 ledkou
 
     let shade = 0; // Držíme si stav s aktuálním odstínem
 
@@ -145,8 +151,12 @@ Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme 
     import { Neopixel, Rgb } from "neopixel";
     import * as gpio from "gpio";
 
-    gpio.pinMode(0, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
-    const ledStrip = new Neopixel(14, 8);  // Připojíme LED pásek na pin 14
+    const BTN_PIN = 0;
+    const STRIP_PIN = 14;
+    const LED_COUNT = 8;
+
+    gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
+    const ledStrip = new Neopixel(STRIP_PIN, LED_COUNT);  // Připojíme pásek s 8 LED na pin 14
 
     let index : number = 0;
     let color : Rgb = colors.light_blue; // Vybereme si barvu
@@ -166,10 +176,12 @@ Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme 
 ## Výstupní úkol V1
 
 Knightrider: svítící LED "běhá" s danou rychlostí od začátku do konce pásky.
-Jakmile dorazí na konec, změní směr, a posouvá se opačným směrem.
+Jakmile dorazí na konec, "otočí se", a posouvá se opačným směrem.
 
-## Pro dobrovolníky
+### Pro dobrovolníky
 
 - Jezdec může při běhu měnit barvy (např. pomocí funkce rainbow)
 
-- Jezdec může zanechávat stopu: barva nezmizí hned, ale až s odstupem. Barva může "mizet" postupně: intenzita stopy se časem snižuje.
+- Jezdec může zanechávat stopu: barva na předchozí LED nezmizí hned, ale až s odstupem
+
+- Barva může "mizet" postupně: intenzita stopy se časem snižuje

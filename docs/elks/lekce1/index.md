@@ -22,10 +22,10 @@ Visual Studio Code je programovací prostředí, které nám umožní psát kód
 
 ### Jaculus
 
-Jaculus je program, který nám umožní nahrávat kód do Jacula a komunikovat s ním.
+Jaculus je program, který nám umožní nahrávat kód do zařízení a komunikovat s ním.
 
 1. Po instalaci Nodu **restartujeme** aplikaci Visual Studio Code.
-2. V horním menu VSCode vyberte záložku `Terminal` a zvolíme `New Terminal`.
+2. V horním menu VSCode vybereme záložku `Terminal` a zvolíme `New Terminal`.
 3. Do terminálu zadáme příkaz vypsaný níže. Na `Linuxu` bude nejspíše potřeba `sudo` práva.
 
 	```bash
@@ -153,7 +153,7 @@ Ve zdrojovém kódu jsou komentáře (`// tohle je komentář`), které nám pop
 		...
 		```
 4. Upravíme si barvu.
-5. Upravímes si číselné proměnné na pojmenované konstanty.
+5. Upravíme si číselné proměnné na pojmenované konstanty.
 
 	??? note "Pojmenované konstanty"
 		```ts
