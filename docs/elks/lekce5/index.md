@@ -169,10 +169,10 @@ Napíšeme funkci, která na vstupu vezme barvu a číslo LED, kterou chceme roz
     import { SmartLed, LED_WS2812 } from "smartled";
     import * as colors from "./libs/colors.js"
 
-    const LED_PIN = 14;
+    const LED_PIN = 21;
     const LED_COUNT = 8;
 
-    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 14, s 8 ledkami a typem WS2812
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 21, s 8 ledkami a typem WS2812
 
     function setLed(color: colors.Rgb, index: number){
         ledStrip.set(index, color); // Nastavíme LED na aktuální odstín

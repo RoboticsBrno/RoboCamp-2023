@@ -160,11 +160,11 @@ Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme 
     import * as colors from "./libs/colors.js"
     import * as gpio from "gpio";
 
-    const LED_PIN = 14;
+    const LED_PIN = 21;
     const LED_COUNT = 8;
 
     gpio.pinMode(0, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
-    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 14, s 8 ledkami a typem WS2812
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 21, s 8 ledkami a typem WS2812
 
     let index : number = 0;
     let color : Rgb = colors.light_blue; // Vybereme si barvu
