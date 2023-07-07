@@ -102,6 +102,8 @@ Rozšíření pro VSCode nám umožní jednoduše nahrávat kód do Jacula pomoc
 
 Zde si vyzkoušíme vytvořit první projekt a nahrát jej do ELKS.
 
+[Stáhnout ZIP s prvním projektem](./example1.zip){ .md-button .md-button--primary }
+
 
 1. V prvním kroku si na počítači nachystáme složku `RoboCamp-2023` do které si budeme ukládat veškeré projekty.
 2. Dále si [stáhneme zip](./example1.zip) soubor s prvním projektem.

@@ -4,6 +4,8 @@ V této lekci si ukážeme ovládání RGB LED umístěné na ESP32 a práci s u
 
 Jelikož je TypeScript (JavaScript) imperativní, vykonávájí se příkazy v takovém pořadí, v jakém jsou zapsány.
 
+[Stáhnout ZIP s prázdným projektem](./blank_project.zip){ .md-button .md-button--primary }
+
 ## Zadání A
 
 Rozsvítíme RGB LED na ESP32 (GPIO 48) jednou barvou (například červenou).
