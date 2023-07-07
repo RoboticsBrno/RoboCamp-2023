@@ -1,17 +1,17 @@
 # Lekce 2 - RGB LED + tlačítko + události
 
-V této lekci si ukážeme ovládání RGB LED umístěné na ESP32 a práci s událostmi řízenými tlačítkem nebo časem. 
+V této lekci si ukážeme ovládání RGB LED umístěné na ESP32 a práci s událostmi řízenými tlačítkem nebo časem.
 
 Jelikož je TypeScript (JavaScript) imperativní, vykonávájí se příkazy v takovém pořadí, v jakém jsou zapsány.
 
 ## Zadání A
 
-Rozsvítíme RGB LED na ESP32 (GPIO 48) jednou barvou (například červenou). 
+Rozsvítíme RGB LED na ESP32 (GPIO 48) jednou barvou (například červenou).
 
-Na začátku tohoto úkolu si stáhneme nový [zip]() soubor obsahující prázdný projekt. Po stažení složku rozbalíme a otevřeme ve Visual Studio Code.
+Na začátku tohoto úkolu si stáhneme nový [zip](./blank_project.zip) soubor obsahující prázdný projekt. Po stažení složku rozbalíme a otevřeme ve Visual Studio Code.
 
 ??? note "Řešení"
-    ```ts 
+    ```ts
     import { Neopixel } from "neopixel";
 
     const LED_PIN = 48;
@@ -34,7 +34,7 @@ Po zaznamenání události se vykoná kód, který je k ní přiřazen.¨
 Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na ESP32 (GPIO 48) a při puštění ho opět zhasneme.
 
 ??? note "Řešení"
-    ```ts 
+    ```ts
     import * as gpio from "gpio";
     import { Neopixel } from "neopixel";
 
