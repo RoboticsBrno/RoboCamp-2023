@@ -165,3 +165,7 @@ assets-large
 .resize-hash
 
 node_modules/
+
+# do not commit the .zip and hash files - they will be generated automatically
+*.zip
+*.zip.hash
