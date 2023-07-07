@@ -84,6 +84,7 @@ plugins:
       folders:
         - elks/lekce1/example1
         - elks/lekce2/blank_project
+        - elks/lekce3/project3
       debug: true
 
 extra:
@@ -118,6 +119,7 @@ nav:
       - elks/lekce5/index.md
       - elks/lekce6/index.md
       - elks/lekce7/index.md
+      - elks/lekce8/index.md
       - "Jaculus API": /jaculusApi
   - Hrací kostka:
       - electronicDie/README.md

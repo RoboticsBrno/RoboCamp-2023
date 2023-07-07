@@ -89,6 +89,7 @@ Druhou variantou je použití předdefinovaných barev, které jsou v souboru `c
   ledStrip.set(0, {r: 0, g: 255, b: 0}); // Rozsvítí LEDku červeně pomocí vlastní barvy
   ```
 
+Pro tuto lekci si stáhneme [zip](./project3.zip), nebo navážeme na předchozí cvičení. Své řešení budeme psát do souboru `index.ts`.
 
 ## Zadání A
 
