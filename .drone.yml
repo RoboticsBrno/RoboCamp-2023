@@ -15,7 +15,6 @@ steps:
       - pip install -r requirements.txt
       - npm install
       - mkdocs build
-      - ls -lAR /
       - sshpass -e rsync -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" -a --delete ./site/  $${MACHINE_USER}@$${MACHINE}:tabor/websites/guide/
     environment:
       MACHINE_USER:
