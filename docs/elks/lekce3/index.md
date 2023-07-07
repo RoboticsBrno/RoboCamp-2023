@@ -72,9 +72,11 @@ Za použití proměnných a podmínek rozsvítíme světlo na naší desce různ
 Barevné světlo vytváříme ze tří základních barev: červená (RED), zelená (GREEN), a modrá (BLUE).
 Tyto barvy mícháme v různých poměrech od 0 do 255, a vytváříme tak různé barvy:
 
-- První hodnota (r) nám dává množství červené (tedy např. hodnoty 100, 0, 0) rozsvítí LEDku červeně
+- První hodnota (r) nám dává množství červené (tedy např. hodnoty `(100, 0, 0)`) rozsvítí LEDku červeně
 - Druhá (g) dává množství zelené
 - Třetí (b) dává množství modré
+
+Podle barev se tomuto schématu říká RGB.
 
 Ve výchozím stavu je LED vypnutá (hodnoty `(0, 0, 0)`), a nejsilnější bílé světlo získáme použitím všech
 barev na maximum (hodnoty `(255, 255, 255)`).
@@ -84,51 +86,51 @@ barev na maximum (hodnoty `(255, 255, 255)`).
 Pomocí jedné proměnné se stavem a podmínky každou sekundu buď rozsvítíme, nebo zhasneme LED na desce.
 
 ??? note "Řešení"
-  ```ts
-  import * from "./colors.js"
-  import { Neopixel } from "neopixel";
+    ```ts
+    import * from "./colors.js"
+    import { Neopixel } from "neopixel";
 
-  const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+    const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
 
-  let on : bool = false; // LED je vypnutá
+    let on : bool = false; // LED je vypnutá
 
-  setInterval(() => {
-    if(on){ // Pokud je LED zapnutá
-      ledStrip.set(0, colors.off); // Vypneme LED
-      ledStrip.show(); // Zobrazíme změny
-      on = false;
-    } else {
-      ledStrip.set(0, colors.green); // Rozsvítíme LED zelenou barvou
-      ledStrip.show(); // Zobrazíme změny
-      on = true
-    }
-  }, 1000);
-  ```
+    setInterval(() => {
+      if(on){ // Pokud je LED zapnutá
+        ledStrip.set(0, colors.off); // Vypneme LED
+        ledStrip.show(); // Zobrazíme změny
+        on = false;
+      } else {
+        ledStrip.set(0, colors.green); // Rozsvítíme LED zelenou barvou
+        ledStrip.show(); // Zobrazíme změny
+        on = true
+      }
+    }, 1000);
+    ```
 
 ## Zadání B
 
-Pomocí funkce `colors.rainbow` budeme procházet duhu. Jde o funkci, která dostane číslo od 0 do 360,
-a na základě toho vrátí barvu na barevném spektru. V daném intervalu (např. 100 ms) budeme postupně zvyšovat číslo a nastavovat barvu LEDky na `colors.rainbow(cislo)`. Pokud naše číslo přesáhne hodnotu `360`, musíme ho
-opět nastavit na `0`.
+Pomocí funkce `colors.rainbow` budeme procházet duhu. Jde o funkci, která dostane číslo od 0 do 360, a na základě toho vrátí barvu na barevném spektru.
+V daném intervalu (např. 100 ms) budeme postupně zvyšovat číslo a nastavovat barvu LEDky na `colors.rainbow(cislo)`.
+Pokud naše číslo přesáhne hodnotu `360`, musíme ho opět nastavit na `0`.
 
 ??? note "Řešení"
-  ```ts
-  import * from "./colors.js"
-  import { Neopixel } from "neopixel";
+    ```ts
+    import * from "./colors.js"
+    import { Neopixel } from "neopixel";
 
-  const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
+    const ledStrip = new Neopixel(48, 1);  // připojí pásek na pin 48, s 1 ledkou
 
-  let shade = 0; // Držíme si stav s aktuálním odstínem
+    let shade = 0; // Držíme si stav s aktuálním odstínem
 
-  setInterval(() => {
-      ledStrip.set(0, colors.rainbow(shade)); // Nastavíme LED na aktuální odstín
-      ledStrip.show(); // Zobrazíme vybranou barvu
-      shade = shade + 1; // Zvedneme odstín
-      if (shade > 360) {
-          shade = 0;
-      }
-  }, 100);
-  ```
+    setInterval(() => {
+        ledStrip.set(0, colors.rainbow(shade)); // Nastavíme LED na aktuální odstín
+        ledStrip.show(); // Zobrazíme vybranou barvu
+        shade = shade + 1; // Zvedneme odstín
+        if (shade > 360) {
+            shade = 0;
+        }
+    }, 100);
+    ```
 
 ## Zadání C
 
@@ -138,28 +140,28 @@ Po stisku tlačítka zhasneme aktuální LEDku, a rozsvítíme tu další.
 Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme opět první LED.
 
 ??? note "Řešení"
-  ```ts
-  import * as colors from "./colors.js"
-  import { Neopixel, Rgb } from "neopixel";
-  import * as gpio from "gpio";
+    ```ts
+    import * as colors from "./colors.js"
+    import { Neopixel, Rgb } from "neopixel";
+    import * as gpio from "gpio";
 
-  gpio.pinMode(0, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
-  const ledStrip = new Neopixel(14, 8);  // Připojíme LED pásek na pin 14
+    gpio.pinMode(0, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
+    const ledStrip = new Neopixel(14, 8);  // Připojíme LED pásek na pin 14
 
-  let index : number = 0;
-  let color : Rgb = colors.light_blue; // Vybereme si barvu
-  ledStrip.set(0, color); // Rozsvítíme první LED
+    let index : number = 0;
+    let color : Rgb = colors.light_blue; // Vybereme si barvu
+    ledStrip.set(0, color); // Rozsvítíme první LED
 
-  gpio.on("falling", 0, () => {
-      ledStrip.set(index, colors.off); // Vypneme předchozí LED
-      index = index + 1; // Zvedneme index
-      if(index > 7){ // Pokud jsme mimo rozsah pásku, vrátíme se na začátek
-          index = 0;
-      }
-      ledStrip.set(index, color); // Nastavíme aktuální LED
-      ledStrip.show();
-  });
-  ```
+    gpio.on("falling", 0, () => {
+        ledStrip.set(index, colors.off); // Vypneme předchozí LED
+        index = index + 1; // Zvedneme index
+        if(index > 7){ // Pokud jsme mimo rozsah pásku, vrátíme se na začátek
+            index = 0;
+        }
+        ledStrip.set(index, color); // Nastavíme aktuální LED
+        ledStrip.show();
+    });
+    ```
 
 ## Výstupní úkol V1
 
