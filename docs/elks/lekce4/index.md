@@ -23,6 +23,8 @@ Tedy zakládáme proměnnou `#!ts i` s výchozí hodnotou `#!ts 0`, následně d
 Při prvním průchodu bude tedy `#!ts i = 0` při druhém `#!ts i = 1 ` a při třetím `#!ts i = 2 ` při dalším zvyšování by platilo `#!ts i = 3 ` tam ale už nebude pravdivý výraz ` i < 3 ` a cyklus se tedy ukončí.
 Do složených závorek píšeme vykonávaný kód.
 
+Kostru na tento úkol najdete [zde](./project4.zip).
+
 ## Zadání A
 Ve spojení se znalostmi z minulých lekcí napište program, který po stisku tlačítka vypíše čísla 0 až 9 (pomocí `#!ts console.log(cislo)`), vždy na samostatný řádek.
 Kod napište tak aby bylo jednoduché ho upravit na výpis jakéhokoli jiného intervalu, např. 0 až 99 nebo 10 až 19.
@@ -97,9 +99,12 @@ např. takto:
 ```
 Velikost tohoto čtverce určete pomocí konstanty jejíž hodnota udává počet řádku a sloupců.
 
+Pokud nechceme za vypsanými znaky nový řádek, místo známého `#!ts console.log()` použijeme `#!ts stdout.write`
+
 ??? note "Řešení"
 	```ts
 	import { stdout } from "stdio";
+
 	const SQUARE_SIZE: number = 3; // velikost čtverce
 
 	console.log("Vykreslíme čtverec o velikosti " + SQUARE_SIZE + "x" + SQUARE_SIZE);
