@@ -83,7 +83,7 @@ Druhou variantou je použití předdefinovaných barev, které jsou v souboru `c
 
   ```ts
   ledStrip.set(0, colors.off); // Vypne LEDku pomocí předdefinované barvy
-  ledStrip.set(0, {r: 255, g: 0, b: 0}); // Vypne LEDku pomocí vlastní barvy
+  ledStrip.set(0, {r: 0, g: 0, b: 0}); // Vypne LEDku pomocí vlastní barvy
 
   ledStrip.set(0, colors.green); // Rozsvítí LEDku červeně pomocí předdefinované barvy
   ledStrip.set(0, {r: 0, g: 255, b: 0}); // Rozsvítí LEDku červeně pomocí vlastní barvy
@@ -160,11 +160,11 @@ Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme 
     import * as colors from "./libs/colors.js"
     import * as gpio from "gpio";
 
-    const LED_PIN = 48;
-    const LED_COUNT = 1;
+    const LED_PIN = 14;
+    const LED_COUNT = 8;
 
     gpio.pinMode(0, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
-    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 14, s 8 ledkami a typem WS2812
 
     let index : number = 0;
     let color : Rgb = colors.light_blue; // Vybereme si barvu

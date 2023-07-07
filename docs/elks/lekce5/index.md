@@ -25,7 +25,8 @@ sayHello();
     ```
 
 ## Předávání argumentů
-Funkcím můžeme při volání předávat argumenty. Abychom to mohli udělat, musíme k tomu přizpůsobit deklaraci. Parametry je taky potřeba vhodně otypovat.
+Funkcím můžeme při volání předávat argumenty. Argumenty funkce píšeme při vytváření funkce do závorky.
+Pokud je argumentů více, oddělujeme je čárkou. Parametry je taky potřeba vhodně otypovat.
 ```ts
 function getSquare(num: number): void {
     let square: number = num * num;
@@ -47,8 +48,9 @@ getSquare(5);
     ```
 
 ## Vracení hodnot
-Z funkce je možné také hodnotu vrátit.
+Z funkce je možné vrátit hodnotu. Můžeme tak jednoduchým způsobem pojmenovat složitější výpočty a provádět je opakovaně.
 Hodnoty vracíme pomocí klíčového slova `#!ts return`. Podobně jako v případě parametrů musíme specifikovat **typ** vracené hodnoty.
+Pokud funkce žádnou hodnotu nevrací, návratový typ je `#!ts void`, tedy "prázdná hodnota".
 
 ```ts
 function getAverage(num1: number, num2: number): number {
@@ -100,22 +102,47 @@ V následujícím programu se nejdřív vykoná ```timeConsumingFunc``` a až po
 ??? tip "Co znamená asynchronní vykonávání funkce? "
     Když zavoláme asynchronní funkci, řízení se nepředá výhradně volané funkci, ale asynchronní zavolaná funkce a původní funkce se začnou střídat v řízení. -->
 
+Samozřejmě můžeme funkce kombinovat, vzájemně volat z jiných funkcí, a výsledky ukládat do proměnných. 
+Můžeme tak kombinovat funkcionalitu dříve napsaných funkcí a zpřehlednit celkový kód.
+
+```ts
+function getSquare(num: number): number { // Druhá mocnina
+    return num * num;
+}
+
+function sumSquares(first: number, second: number) { // Sečti druhé mocniny
+    let result = getSquare(first) + getSquare(second);
+    return result;
+}
+```
 
 ## Zadání A
 
-Vytvoř funkci, která vypíše pozdrav tvým jménem. Jméno předávej jako parametr.
+Podíváme se opět na příklady z předchozích lekcí, a zobecníme části kódu tak, aby šly jednoduše měnit.
+V prvním příkladu vytvoříme funkci `#!ts count`, která jako argumenty vezme dvě čísla, a postupně vypíše čísla od prvního argumentu, po druhý.
+tedy zavolání funkce `#!ts count(1, 5)` vypíše
+
+```bash
+1
+2
+3
+4
+5
+```
+
 ??? note "Řešení"
     ```ts
-    function greet(name: string) : void { // funkce bere jeden parametr typu string a nevrací žádnou hodnotu
-        console.log("Ahoj " + name);
+    function count(lower: number, upper: number): void {
+        for (let counter = lower; counter <= upper; counter++) {
+            console.log(counter);
+        }
     }
-
-    greet("Franto"); // výstup: Ahoj Franto
     ```
 
 ## Zadání B
 
-Funkce která bere 2 argumenty a vykreslí obdélník o daných rozměrech
+Místo vypisování čtverečku si chceme napsat funkci, která na výstup nakreslí obdélník libovolné velikosti.
+Napíšeme tedy funkci `#!ts drawRectangle` (nakresli obdélník), která vezme argument šířky a délky, a poté vypíše obdélník dané velikosti.
 ??? note "Řešení"
     ```ts
     import { stdout } from "stdio";
@@ -129,16 +156,38 @@ Funkce která bere 2 argumenty a vykreslí obdélník o daných rozměrech
         }
     }
 
-    drawRectangle(5, 2); // vypíše obdélník o velikosti 5x2
+    drawRectangle(5, 2); // vypíše obdélník o velikosti šířky 5 a délky 2
     ```
 
 ## Zadání C
 
-Vytvoř
-předám 3 parametry na nastavení RGB LED a poté X a Y
-nastavím blok ledek mezi X a Y
+Nakonec se vrátíme k LED páskům, které teď můžeme rozsvítit jednou funkcí vybraným způsobem.
+Napíšeme funkci, která na vstupu vezme barvu a číslo LED, kterou chceme rozsvítit.
 
+??? note "Řešení"
+    ```ts
+    import { SmartLed, LED_WS2812 } from "smartled";
+    import * as colors from "./libs/colors.js"
+
+    const LED_PIN = 14;
+    const LED_COUNT = 8;
+
+    const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 14, s 8 ledkami a typem WS2812
+
+    function setLed(color: colors.Rgb, index: number){
+        ledStrip.set(index, color); // Nastavíme LED na aktuální odstín
+        ledStrip.show(); // Zobrazíme vybranou barvu
+    }
+    ```
 
 ## Zadání výstupního úkolu V1
 
-funkce gradient - začátek a konec v RGB - objekt
+Zkombinujeme to, co jsme se zatím naučili:
+vytvoříme funkci, která na vstupu dostane barvu, číslo počáteční a koncové LED, a zabarví všechny LED v tomto rozsahu.
+Ostatní LED zhasne.
+
+!!! tip "Pro dobrovolníky"
+
+    - Můžeme vybrané LEDky rozsvítit různými barvami: např. funkcí `#!ts colors.rainbow()` procházet definovaný rozsah barev
+
+    - Místo jedné barvy můžeme zadat počáteční a koncovou barvu, přičemž LED mezi nimi budou mezi těmito dvěma barvami postupně přecházet.
