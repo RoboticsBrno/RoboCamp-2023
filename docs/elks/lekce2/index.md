@@ -44,7 +44,7 @@ Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na E
 
     const ledStrip = new Neopixel(LED_PIN, LED_COUNT);  // připojí pásek na pin 48, s 1 ledkou
 
-    gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
+    gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT_PULLUP); // nastaví pin nula jako vstup
 
     gpio.on("falling", BTN_PIN, () => { // událost, která proběhne při stisknutí tlačítka připojeného na pin 0
         ledStrip.set(0, {r: 255, g: 0, b: 0}); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
@@ -67,7 +67,7 @@ Dvakrát za sekundu vypíšeme stav zmáčnutí tlačítka (0 nebo 1). Opakován
 
     const BTN_PIN = 0;
 
-    gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
+    gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT_PULLUP); // nastaví pin nula jako vstup
 
     setInterval(() => { // pravidelně vyvolává událost
         console.log(gpio.read(BTN_PIN)); // načte a vypíše stav tlačítka připojeného na pin 0
