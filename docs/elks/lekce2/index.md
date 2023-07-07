@@ -13,13 +13,14 @@ Na začátku tohoto úkolu si stáhneme nový [zip]() soubor obsahující prázd
 ??? note "Řešení"
     ```ts 
     import { Neopixel } from "neopixel";
+    import * as colors from "./libs/colors.js";
 
     const LED_PIN = 48;
     const LED_COUNT = 1;
 
     const ledStrip = new Neopixel(LED_PIN, LED_COUNT);  // připojí pásek na pin 48, s 1 ledkou
 
-    ledStrip.set(0, {r: 255, g: 0, b: 0}); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
+    ledStrip.set(0, {colors.red}); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
     ledStrip.show(); // zobrazí nastavení na LED
     ```
 
