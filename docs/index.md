@@ -37,7 +37,7 @@ glightbox: false
         </div>
         <div class="col--1">
             <a href="elks/">
-                <img src="elks/assets/elks-box.png">
+                <img src="elks/assets/elks-promo2.png">
                 <h2>ELKS</h2>
             </a>
         </div>

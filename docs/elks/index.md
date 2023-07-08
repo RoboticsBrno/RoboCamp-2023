@@ -6,6 +6,8 @@ Kity používáme v kroužcích pro začátečníky i pokročilé.
 
 Desku lze napájet pomocí USB kabelu nebo power banky připojené přímo k desce.
 
+![ELKS Demo](./assets/elks-promo0.png)
+
 ## Funkce:
 - LED
 - Tlačítka
@@ -19,8 +21,8 @@ Desku lze napájet pomocí USB kabelu nebo power banky připojené přímo k des
 Letos budeme vývojové desky programovat na platformě ESP32-S3. Pro programování budeme používat jazyk TypeScript, v kombinaci s knihovnou [Jaculus](https://jaculus.org/).
 
 <div align="center">
-    <img src="./assets/elks-power.png" width="49%">
-    <img src="./assets/elks-box.png" width="49%">
+    <img src="./assets/elks-promo1.png" width="49%">
+    <img src="./assets/elks-promo2.png" width="49%">
 </div>
 
 <div align="center">
