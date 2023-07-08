@@ -26,7 +26,7 @@ Hodnoty jsou uloženy za sebou, můžeme je do pole přidávat, odebírat, a př
 - Délku pole zjistíme pomocí funkce 
     ```ts
     let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    let length : number = arr.length(); // hodnota length bude 5
+    let length : number = arr.length; // hodnota length bude 5
     ```
 - Hodnotu na konec pole přidáme pomocí funkce `push`
     ```ts
