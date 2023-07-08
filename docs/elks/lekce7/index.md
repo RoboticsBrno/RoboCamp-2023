@@ -40,6 +40,9 @@ Hodnoty jsou uloženy za sebou, můžeme je do pole přidávat, odebírat, a př
     let num : number = arr.pop();  // odebere hodnotu z konce: výsledné pole bude [1, 2, 3, 4]
     ```
 
+K řešení budeme potřebovat [stejné nástroje](../lekce6/project6.zip) jako v předchozí lekci.
+Složku si můžete rozbalit jako project7.
+
 ## Zadání A
 
 Opět navážeme na předchozí lekce, a budeme do pole ukládat hodnoty z potenciometru.

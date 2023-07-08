@@ -86,6 +86,7 @@ plugins:
         - elks/lekce2/blank_project
         - elks/lekce3/project3
         - elks/lekce4/project4
+        - elks/lekce6/project6
 
       debug: true
 

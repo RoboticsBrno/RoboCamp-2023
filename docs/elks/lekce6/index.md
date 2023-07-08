@@ -6,6 +6,7 @@ ADC používáme pro měření napětí, které je výstupem z některých senzo
 Převádí napětí na hodnotu v rozsahu `0-1023`, kterou pak můžeme dále zpracovávat.
 
 To využijeme pro čtení dat z **potenciometru** a **joysticku**.
+Své řešení opět můžeme psát do souborů z předchozích cvičení, nebo stáhnout [novou kostru](./project6.zip).
 
 ## Zadání A
 
