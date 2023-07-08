@@ -24,10 +24,13 @@ function interpolate( startColor: Rgb, endColor: Rgb, t: number ) : Rgb {
 	return { r: red, g: green, b: blue };
 }
 function setLeds( start: number, end: number, startColor: Rgb, endColor: Rgb = startColor ){
+	for( let i = 0; i < 8; i++ ){
+		ledStrip.set( i, colors.off );
+	}
 	for( let i = start; i <= end; i++ ){
 		ledStrip.set( i, interpolate( startColor, endColor, i / ( end + 1 - start ) ) );
 	}
 	ledStrip.show();
 }
 
-setLeds( 1, 6, colors.red, colors.blue );
+setLeds( 1, 6, colors.green, colors.blue );
