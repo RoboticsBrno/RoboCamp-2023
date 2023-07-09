@@ -44,7 +44,7 @@ Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na E
 
     const LED_PIN = 48;
     const LED_COUNT = 1;
-    const BTN_PIN = 0;
+    const LBTN_PIN = 18;
 
     const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
@@ -69,7 +69,7 @@ Dvakrát za sekundu vypíšeme stav zmáčknutí tlačítka (0 nebo 1). Opaková
     ```ts
     import * as gpio from "gpio";
 
-    const BTN_PIN = 0;
+    const LBTN_PIN = 18;
 
     gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
 
