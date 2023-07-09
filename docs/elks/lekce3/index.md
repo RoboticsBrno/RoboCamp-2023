@@ -164,9 +164,9 @@ Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme 
     const LED_PIN = 21;
     const LED_COUNT = 8;
 
-    const LBTN_PIN = 18;
+    const BTN_PIN = 18;
 
-    gpio.pinMode(LBTN_PIN, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
+    gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT_PULLUP); // Nastavíme tlačítko
     const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 21, s 8 ledkami a typem WS2812
 
     let index : number = 0;
@@ -174,7 +174,7 @@ Pokud při stisku tlačítka svítí poslední LED, zhasneme ji, a rozsvítíme 
     ledStrip.set(0, color); // Nastavíme LED na aktuální odstín
     ledStrip.show(); // Zobrazíme změny
 
-    gpio.on("falling", LBTN_PIN, () => {
+    gpio.on("falling", BTN_PIN, () => {
         ledStrip.set(index, colors.off); // Vypneme předchozí LED
         index = index + 1; // Zvedneme index (lze i index += 1)
         if(index > 7){ // Pokud jsme mimo rozsah pásku, vrátíme se na začátek

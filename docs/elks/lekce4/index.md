@@ -33,7 +33,7 @@ Kod napište tak aby bylo jednoduché ho upravit na výpis jakéhokoli jiného i
     ```ts
 	import * as gpio from "gpio";
 
-    const LBTN_PIN = 18;
+    const BTN_PIN = 18;
 
 	gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT_PULLUP); // nastaví pin nula jako vstup
 
@@ -70,14 +70,14 @@ Napište kód který bude blikat ledkou pokud je stisknuté tlačítko.
 
 	const LED_PIN = 48;
 	const LED_COUNT = 1;
-    const LBTN_PIN = 18;
+    const BTN_PIN = 18;
 
 	const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
 	gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT_PULLUP); // nastaví pin nula jako vstup
 
 	gpio.on("falling", 0, async () => { // event, který proběhne při stisknutí tlačítka připojeného na pin 0
-		while (gpio.read(LBTN_PIN) == 0) { // dokud je tlačítko stisknuté
+		while (gpio.read(BTN_PIN) == 0) { // dokud je tlačítko stisknuté
 			ledStrip.set(0, colors.red);
 			ledStrip.show();
 			await sleep(500); // nastavíme červenou barvu a počkáme půl sekundy

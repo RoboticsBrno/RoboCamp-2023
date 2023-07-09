@@ -5,7 +5,7 @@ import { stdout } from "stdio";
 import * as adc from "adc";
 
 
-const LBTN_PIN = 18;
+const BTN_PIN = 18;
 const MBTN_PIN = 16;
 const RBTN_PIN = 42;
 
@@ -22,13 +22,13 @@ let ledStrip = new SmartLed(STRIP_PIN, LED_COUNT, LED_WS2812);
 adc.configure(POT0_PIN);
 adc.configure(POT1_PIN);
 
-gpio.pinMode(LBTN_PIN, gpio.PinMode.INPUT);
+gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT);
 gpio.pinMode(MBTN_PIN, gpio.PinMode.INPUT);
 gpio.pinMode(RBTN_PIN, gpio.PinMode.INPUT);
 
 let state : Array<number> = []
 
-gpio.on( "falling", LBTN_PIN, () => {
+gpio.on( "falling", BTN_PIN, () => {
 	if( state.length < 8 ){
 		state.push( adc.read( POT0_PIN ) );
 	}

@@ -5,7 +5,7 @@ import { stdout } from "stdio";
 import * as adc from "adc";
 
 
-const LBTN_PIN = 18;
+const BTN_PIN = 18;
 const MBTN_PIN = 16;
 const RBTN_PIN = 6;
 
