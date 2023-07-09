@@ -8,9 +8,11 @@ Jelikož je TypeScript (JavaScript) imperativní, vykonávájí se příkazy v t
 
 ## Zadání A
 
-Rozsvítíme RGB LED na ESP32 (`GPIO 48`) jednou barvou (například červenou).
+Nejdříve si zopakujeme předchozí lekci, a rozsvítíme RGB LED na ESP32 (`GPIO 48`) jednou barvou (například červenou).
 
-Na začátku tohoto úkolu si stáhneme nový [zip](./blank_project.zip) soubor obsahující prázdný projekt. Po stažení složku rozbalíme a otevřeme ve Visual Studio Code.
+Na začátku tohoto úkolu si stáhneme nový [zip](./blank_project.zip) soubor obsahující prázdný projekt. Po stažení složku rozbalíme a otevřeme ve Visual Studio Code. V souboru `index.ts` jsou připraveny `import` příkazy: ty nám umožní využívat funkcionalitu z různých souborů, např. jednoduše ovládat LEDku, nebo využívat nadefinované barvy.
+
+Abychom mohli LED u procesoru ovládat, musíme ji získat příkazem `#!ts const led = new SmartLed(...)`, a do závorky napíšeme číslo PINu, počet LED světel (zatím je to 1), a typ světla: `LED_WS2812`. Barvu LED nastavíme pomocí `led.set(0, colors.nějaká_barva)` a zobrazíme pomocí `led.show()`.
 
 ??? note "Řešení"
     ```ts
@@ -29,8 +31,25 @@ Na začátku tohoto úkolu si stáhneme nový [zip](./blank_project.zip) soubor 
 ## Co je to událost v programování?
 
 Událost, která je programem rozpoznávána (například stisknutí nebo puštění tlačítka nebo uplynutí nějakého času).
+Po zaznamenání události se vykoná kód, který je k ní přiřazen.
 
-Po zaznamenání události se vykoná kód, který je k ní přiřazen.¨
+S událostí řízenou časem už jsme se setkali: pomocí `setInterval` umíme vyvolat něco, co se opakuje každých `X` milisekund.
+
+Události řízené stiskem tlačítka můžeme ovládat pomocí přiložené knihovny `gpio`.
+`GPIO` je jednoduchá elektronická konstrukce, která nám umožňuje posílat nebo přijímat bit informace, a na základě toho měnit chování našeho programu.
+
+Abychom mohli přijímat signál ze stisknutí tlačítka, nejdříve musíme nastavit vybraný pin jako vstupní. To uděláme příkazem `#!ts gpio.pinMode(PIN, gpio.pinMode.INPUT)`, kde PIN je číslo pinu (najdeme na stránce), a druhý argument je režim. Pokud bychom chtěli např. použít LEDky přímo na desce, chceme dané piny použít jako výstupní, tedy `gpio.pinMode.OUTPUT`.
+
+Jakmile máme nastavené vstupní tlačítko, můžeme na něm pozorovat události pomocí `#!ts gpio.on()`. Reakci na stisknutí tlačítka vyvoláme argumentem `"falling"`, reakci na puštění `"rising"`. Kód, který při stisku tlačítka něco vykoná, tedy může vypadat takto:
+
+```ts
+const BTN_PIN = nějaké číslo;
+gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT); 
+
+gpio.on("falling", BTN_PIN, () => {
+    // něco udělej
+});
+```
 
 ## Zadání B
 
@@ -44,13 +63,13 @@ Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na E
 
     const LED_PIN = 48;
     const LED_COUNT = 1;
-    const BTN_PIN = 18;
+    const BTN_LEFT = 18;
 
     const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
-    gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
+    gpio.pinMode(BTN_LEFT, gpio.PinMode.INPUT); // nastaví pin 18 jako vstup
 
-    gpio.on("falling", BTN_PIN, () => { // událost, která proběhne při stisknutí tlačítka připojeného na pin 0
+    gpio.on("falling", BTN_LEFT, () => { // událost, která proběhne při stisknutí tlačítka připojeného na pin 0
         ledStrip.set(0, colors.red); // nastaví barvu nulté LED na červenou (RGB 255 0 0)
         ledStrip.show(); // zobrazí nastavení na LED
     });
@@ -63,13 +82,13 @@ Pomocí událostí rozsvítíme při stisknutí tlačítka (GPIO 0) RGB LED na E
 
 ## Zadání C
 
-Dvakrát za sekundu vypíšeme stav zmáčknutí tlačítka (0 nebo 1). Opakování dosáhneme pomocí `setInterval()`.
+Dvakrát za sekundu vypíšeme stav zmáčknutí tlačítka (0 nebo 1). Opakování dosáhneme pomocí `setInterval()`. Stav daného tlačítka získáme pomocí `#!ts gpio.read(číslo pinu)`.
 
 ??? note "Řešení"
     ```ts
     import * as gpio from "gpio";
 
-    const BTN_PIN = 18;
+    const LBTN_PIN = 18;
 
     gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT); // nastaví pin nula jako vstup
 
