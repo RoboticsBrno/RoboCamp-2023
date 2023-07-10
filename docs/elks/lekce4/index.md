@@ -56,7 +56,7 @@ while (condition - podmínka) {
 	// náš kód
 }
 ```
-V podobných případech se nám bude často hodit funkce `#!ts await sleep(t)`, která zařídí že kód posečká zadaný čas (zadaný čas je v ms neboli v tisícinách sekundy).
+<!-- V podobných případech se nám bude často hodit funkce `#!ts await sleep(t)`, která zařídí že kód posečká zadaný čas (zadaný čas je v ms neboli v tisícinách sekundy). -->
 
 
 ## Zadání B
