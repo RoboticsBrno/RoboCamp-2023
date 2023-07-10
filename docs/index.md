@@ -37,15 +37,23 @@ glightbox: false
         </div>
         <div class="col--1">
             <a href="elks/">
-                <img src="elks/assets/elks-promo2.png">
+                <img src="elks/assets/elks-model.png">
                 <h2>ELKS</h2>
             </a>
         </div>
         <div class="col--1">
-            <!-- <a href="blackBox/">
+            <a href="elksBox/">
+                <img src="elks/assets/elks-promo2.png">
+                <h2>ELKS krabička</h2>
+            </a>
+        </div>
+        <!--
+        <div class="col--1">
+            <a href="blackBox/">
                 <img src="blackBox/assets/blba_bedna.png">
                 <h2>BlackBox</h2>
-            </a> -->
+            </a>
         </div>
+        -->
     </div>
 </div>
