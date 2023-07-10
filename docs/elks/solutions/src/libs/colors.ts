@@ -62,7 +62,7 @@ export function hsl_to_rbg( hsl: Hsl ) : Rgb {
  * @returns {Rgb}
  */
 export function rainbow( hue: number, brightness: number = 50) : Rgb {
-    hue = Math.min( hue, 360 ); // Zajistíme, že zadaná hodnota není mimo rozsah
+    hue = Math.min(Math.max(hue, 0), 360 ); // Zajistíme, že zadaná hodnota není mimo rozsah
     // fix range to 0-100
     let brightness_mapped = Math.min(Math.max(brightness, 0), 100);
     return hsl_to_rbg( { h: hue, s: 1, l: brightness_mapped / 100 } );

@@ -45,9 +45,10 @@ export function hsl_to_rbg( hsl: Hsl ) : Rgb {
 }
 
 /* Funkce rainbow zafixuje sytost a světlost, a prochází barvami */
-export function rainbow( hue: number ) : Rgb {
+export function rainbow( hue: number, lightness: number = 20 ) : Rgb {
     hue = Math.min( hue, 360 ); // Zajistíme, že zadaná hodnota není mimo rozsah
-    return hsl_to_rbg( { h: hue, s: 1, l: 0.5 } );
+    let lightness_clamped = Math.min(Math.max(lightness, 0), 100);
+    return hsl_to_rbg( { h: hue, s: 1, l: lightness_clamped / 100 } );
 }
 
 /* Základní barvy pro LED pásky*/

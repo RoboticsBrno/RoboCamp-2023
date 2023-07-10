@@ -33,7 +33,7 @@ Kod napište tak aby bylo jednoduché ho upravit na výpis jakéhokoli jiného i
     ```ts
 	import * as gpio from "gpio";
 
-	const BTN_PIN = 0;
+    const BTN_PIN = 18;
 
 	gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT_PULLUP); // nastaví pin nula jako vstup
 
@@ -56,11 +56,11 @@ while (condition - podmínka) {
 	// náš kód
 }
 ```
-V podobných případech se nám bude často hodit funkce `#!ts await sleep(t)`, která zařídí že kód posečká zadaný čas (zadaný čas je v ms neboli v tisícinách sekundy).
+<!-- V podobných případech se nám bude často hodit funkce `#!ts await sleep(t)`, která zařídí že kód posečká zadaný čas (zadaný čas je v ms neboli v tisícinách sekundy). -->
 
 
 ## Zadání B
-Napište kód který bude blikat ledkou pokud je stisknuté tlačítko.
+<!-- Napište kód který bude blikat ledkou pokud je stisknuté tlačítko.
 
 ??? note "Řešení"
 	```ts
@@ -70,7 +70,7 @@ Napište kód který bude blikat ledkou pokud je stisknuté tlačítko.
 
 	const LED_PIN = 48;
 	const LED_COUNT = 1;
-	const BTN_PIN = 0;
+    const BTN_PIN = 18;
 
 	const ledStrip = new SmartLed(LED_PIN, LED_COUNT, LED_WS2812);  // připojí pásek na pin 48, s 1 ledkou a typem WS2812
 
@@ -89,7 +89,7 @@ Napište kód který bude blikat ledkou pokud je stisknuté tlačítko.
 	});
 	```
 
-## Zadání C
+## Zadání C -->
 Nyní napište kód který do konzole vypíše čtverec složený z hvězdiček (znaku `*`),
 např. takto:
 ```
@@ -132,3 +132,7 @@ Stejně jako v zadání C budeme do konzole vykreslovat geometrický obrazec, ak
 ****
 *****
 ```
+
+!!! tip "Pro dobrovolníky"
+
+    - Zkuste kreslit různé tvary, a různé typy: např. trojuhelník, který je uvnitř dutý, stromeček, nebo kruh

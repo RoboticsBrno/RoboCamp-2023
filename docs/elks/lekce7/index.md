@@ -23,10 +23,10 @@ Hodnoty jsou uloženy za sebou, můžeme je do pole přidávat, odebírat, a př
         let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
         arr[2] = 10;  // změní hodnotu na indexu 2 z 3 na 10: výsledné pole bude [1, 2, 10, 4, 5]
         ```
-- Délku pole zjistíme pomocí funkce 
+- Délku pole zjistíme pomocí funkce
     ```ts
     let arr : number[] = [1, 2, 3, 4, 5];  // vytvoří pole
-    let length : number = arr.length(); // hodnota length bude 5
+    let length : number = arr.length; // hodnota length bude 5
     ```
 - Hodnotu na konec pole přidáme pomocí funkce `push`
     ```ts
@@ -60,17 +60,17 @@ Stav pole si můžeme po každé změně vypsat pomocí `#!ts console.log(pole)`
     const INPUT_PIN : number = 2;
     const LED_PIN : number = 21;
     const LED_COUNT : number = 8;
-    const LBTN_PIN : number = 18;
+    const BTN_PIN : number = 18;
     const MBTN_PIN : number = 16;
 
     const ledStrip = new SmartLed(LED_PIN, LED_COUNT); // Nastavíme LED pásek
-    gpio.pinMode(LBTN_PIN, gpio.PinMode.INPUT); // Nastavíme levé tlačítko
+    gpio.pinMode(BTN_PIN, gpio.PinMode.INPUT); // Nastavíme levé tlačítko
     gpio.pinMode(MBTN_PIN, gpio.PinMode.INPUT); // Nastavíme střední tlačítko
     adc.configure(INPUT_PIN); // Nastavíme vstup z POT0
 
     let arr : number[] = [];
 
-    gpio.on("falling", LBTN_PIN, () => { // Při stisknutí levého tlačítka
+    gpio.on("falling", BTN_PIN, () => { // Při stisknutí levého tlačítka
         arr.push(adc.read(INPUT_PIN)); // Přidáme do pole naměřenou hodnotu
         console.log(arr); // Vypíšeme nový stav
     });
