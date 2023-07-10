@@ -60,7 +60,7 @@ V podobných případech se nám bude často hodit funkce `#!ts await sleep(t)`,
 
 
 ## Zadání B
-Napište kód který bude blikat ledkou pokud je stisknuté tlačítko.
+<!-- Napište kód který bude blikat ledkou pokud je stisknuté tlačítko.
 
 ??? note "Řešení"
 	```ts
@@ -89,7 +89,7 @@ Napište kód který bude blikat ledkou pokud je stisknuté tlačítko.
 	});
 	```
 
-## Zadání C
+## Zadání C -->
 Nyní napište kód který do konzole vypíše čtverec složený z hvězdiček (znaku `*`),
 např. takto:
 ```
