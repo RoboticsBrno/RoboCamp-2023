@@ -116,7 +116,7 @@ Jakmile máme vytvořený objekt typu readline, pomocí `await reader.read()` po
 
 ## Zadání B
 
-Napíšeme program, který se zeptá, jak se jmenujeme, a počká na odpověď. Až program dostane odpověď, vypíše na konzoli `#!ts Jmenuješ se " a jméno, které jsme mu zadali.
+Napíšeme program, který se zeptá, jak se jmenujeme, a počká na odpověď. Až program dostane odpověď, vypíše na konzoli `#!ts Jmenuješ se "` a jméno, které jsme mu zadali.
 
 ??? note "Řešení"
     ```ts
