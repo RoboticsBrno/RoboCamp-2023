@@ -59,8 +59,9 @@ while (condition - podmínka) {
 <!-- V podobných případech se nám bude často hodit funkce `#!ts await sleep(t)`, která zařídí že kód posečká zadaný čas (zadaný čas je v ms neboli v tisícinách sekundy). -->
 
 
-## Zadání B
 <!-- Napište kód který bude blikat ledkou pokud je stisknuté tlačítko.
+## Zadání C
+...
 
 ??? note "Řešení"
 	```ts
@@ -88,8 +89,9 @@ while (condition - podmínka) {
 		}
 	});
 	```
+-->
 
-## Zadání C -->
+## Zadání B
 Nyní napište kód který do konzole vypíše čtverec složený z hvězdiček (znaku `*`),
 např. takto:
 ```
@@ -123,7 +125,7 @@ Napište kod který který vypíše čísla od 9 do 0.
 Nápověda, zadání je velmi podobné jako zadání A jen jdou čísla sestupně namísto vzestupně.
 
 ## Zadání výstupního úkolu V2
-Stejně jako v zadání C budeme do konzole vykreslovat geometrický obrazec, akorát tentokrát to bude trojúhelník jako tenhle:
+Stejně jako v zadání B budeme do konzole vykreslovat geometrický obrazec, akorát tentokrát to bude trojúhelník jako tenhle:
 
 ```
 *
