@@ -124,6 +124,7 @@ nav:
       - elks/lekce7/index.md
       # - elks/lekce8/index.md
       - elks/lekce9/index.md
+      - elks/grafo/index.md
       - "Jaculus API": /jaculusApi
   - ELKS krabička:
       - elksBox/index.md
