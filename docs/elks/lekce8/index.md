@@ -50,7 +50,7 @@ function greetName(name: string) : void {
 }
 ```
 
-Na dnešní cvičení si opět můžeme stáhnout [zip](./example8.zip). 
+Na dnešní cvičení si opět můžeme stáhnout [zip](./project8.zip). 
 
 ## Zadání A
 
