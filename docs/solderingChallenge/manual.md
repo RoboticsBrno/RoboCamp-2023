@@ -21,7 +21,7 @@
 
 !!! Pozor danger
     Pozor, u kondenzátoru 4.7u záleží na polaritě. Popisek kondenzátoru
-    musí směřovat <span style="color:red">**dovnitř**</span> desky. Zeptej se lektora, pokud si nejsi jistý.
+    musí směřovat <span style="color:red">**ven**</span> desky. Zeptej se lektora, pokud si nejsi jistý.
 
 ### Úroveň 1
 
