@@ -19,4 +19,10 @@
 - Zadejte `Jaculus: Get firmware version`.
 - Výsledek by se měl objevit v terminálu.
 
-##
+## Jak si nainstalovat/přeinstalovat Jaculus na ELKS
+- Musíte mít nainstalovaný Python 3 a git
+- Zjistěte si port ELKSe, na které chcete nainstalovat Jacula
+- Port na windowsech bude COM a číslo, například `COM26`
+- Do terminálu zadejte `jac install --port <port> --platform esp32s3 --idf force-init`
+- Pokud už jste instalovali Jaclua na vašem počítačí, použijte tento příkaz `jac install --port <port> --platform esp32s3`. Protože `--idf force-init` zajistí že se vám vždy nainstaluje espidf, ale to už není potřeba, protože už ho máte nainstalované.
+- Pokud chcete nainstalovat Jaculus na Logica, platformu změňte z `esp32s3` na `esp32`, jinak platí vše co je napsané předem.
