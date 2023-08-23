@@ -88,6 +88,7 @@ plugins:
         - elks/lekce4/project4
         - elks/lekce6/project6
         - elks/lekce8/project8
+        - elks/roboplace/roboplace_project
 
       debug: true
 
@@ -127,6 +128,7 @@ nav:
       - elks/lekce9/index.md
       - elks/lekce10/index.md
       - elks/grafo/index.md
+      - elks/roboplace/index.md
       - "Jaculus API": /jaculusApi
   - ELKS krabička:
       - elksBox/index.md

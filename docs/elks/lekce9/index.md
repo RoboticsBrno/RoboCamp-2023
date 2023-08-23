@@ -187,26 +187,3 @@ Najděte kamaráda, abyste si mohli navzájem zkusit, zda program funguje (jeden
 ## Výchozí úkol V1
 
 Změňtě program ze zadání A tak, aby místo tlačítek vyčítal potenciometr, a místo ledek rozsvicoval LED pásek. Je na vás, zda vzládnete rozsvicovat a pohybovat duhou, nebo pouze jednou z LED podle toho, jak se natočí potenciometr na vysílači.
-
-## RoboPlace
-
-Máme tu RoboPlace jako minulý rok. Můžete na něj psát v kanálu 8 z ELKSu a na kanálu 128 s Microbitem.
-
-Na kreslení posílejte pomocí funkce `radio.sendString()` příkaz `paint <x> <y> <color>`
-
-```ts
-import * as radio from "simpleradio";
-
-// zapnutí radia, 8 je číslo skupiny. Může být od 0 do 15 včetně.
-radio.begin(8);
-
-// pošle příkaz na kreslení
-radio.sendString("paint 1 2 red");
-
-// vypnutí radia
-radio.end();
-```
-
-Webovou verzi si můžete otevřít na adrese [http://192.168.1.199:8888](http://192.168.1.199:8888) 
-
-![](assets/colors.png)
