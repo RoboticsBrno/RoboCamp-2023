@@ -8,13 +8,6 @@ Budeme potřebovat:
 
 ## Repo
 Naklonujeme si repozitář:
-Na táboře:
-
-```bash
-git clone http://git.lan/orgs/RoboCamp-2023.git
-```
-
-Doma:
 
 ```bash
 git clone https://github.com/RoboticsBrno/RoboCamp-2023.git

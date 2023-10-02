@@ -10,14 +10,14 @@ Pro práci s Jaculem je nutné nainstalovat několik programů.
 
 Node.js je program, který nám umožní nahrávat kód do Jacula a komunikovat s ním.
 
-1. Stáhneme si [Node.js](https://nodejs.org/en/download) (nejnovější stabilní verzi - LTS) - [Stahuj ZDE pro Windows](http://files.lan/node-v18.16.1-x64.msi)
+1. Stáhneme si [Node.js](https://nodejs.org/en/download) (nejnovější stabilní verzi - LTS)
 2. Nainstalujeme jej dle výchozího nastavení (není potřeba nic měnit).
 
 ### Visual Studio Code
 
 Visual Studio Code je programovací prostředí, které nám umožní psát kód a s rozšířením nám dovolí nahrávat kód do zařízení.
 
-1. Stáhneme si [Visual Studio Code](https://code.visualstudio.com/download) (nejnovější stabilní verzi) - [Stahuj ZDE pro Windows](http://files.lan/VSCodeUserSetup-x64-1.79.2.exe)
+1. Stáhneme si [Visual Studio Code](https://code.visualstudio.com/download) (nejnovější stabilní verzi)
 2. Nainstalujeme jej dle výchozího nastavení (není potřeba nic měnit).
 
 ### Jaculus

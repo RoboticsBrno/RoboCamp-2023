@@ -3,6 +3,13 @@ Masivně multiplayerová kooperační hra! Co zvládneš nakreslit ty?
 
 Na adrese [http://grafo.lan](http://grafo.lan) běží stránka, na kterou může kdokoliv kreslit [pomocí radia](../lekce9/index.md):
 
+!!! warning "Proč to nefunguje doma?"
+    Stránka je dostupná pouze na Robotickém táboře!
+
+
+??? info "Domácí verze"
+    Pokud chcete hrát doma, můžete si stránku spustit lokálně. Zdrojové kódy najdete na GitHubu [zde](https://github.com/RoboticsBrno/multiplayer_grafo).
+
 
 ![](assets/grafo.png)
 
