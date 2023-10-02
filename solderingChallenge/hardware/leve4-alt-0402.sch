@@ -1,0 +1,180 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 7 7
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+NoConn ~ 4550 3300
+NoConn ~ 4550 3400
+$Comp
+L Device:R R?
+U 1 1 601452FC
+P 6750 3300
+AR Path="/601452FC" Ref="R?"  Part="1" 
+AR Path="/600FF0C1/601452FC" Ref="R?"  Part="1" 
+AR Path="/60142645/601452FC" Ref="R16"  Part="1" 
+F 0 "R16" V 6550 3300 50  0000 C CNN
+F 1 "100k" V 6650 3300 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 6680 3300 50  0001 C CNN
+F 3 "~" H 6750 3300 50  0001 C CNN
+	1    6750 3300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6014531A
+P 7150 3450
+AR Path="/6014531A" Ref="C?"  Part="1" 
+AR Path="/600FF0C1/6014531A" Ref="C?"  Part="1" 
+AR Path="/60142645/6014531A" Ref="C11"  Part="1" 
+F 0 "C11" H 7265 3496 50  0000 L CNN
+F 1 "100n" H 7265 3405 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 7188 3300 50  0001 C CNN
+F 3 "~" H 7150 3450 50  0001 C CNN
+	1    7150 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:USB_A J?
+U 1 1 60145332
+P 4250 3300
+AR Path="/60145332" Ref="J?"  Part="1" 
+AR Path="/600FF0C1/60145332" Ref="J?"  Part="1" 
+AR Path="/60142645/60145332" Ref="J12"  Part="1" 
+F 0 "J12" H 4307 3767 50  0000 C CNN
+F 1 "USB_A" H 4307 3676 50  0000 C CNN
+F 2 "RoboCamp:usb-PCB" H 4400 3250 50  0001 C CNN
+F 3 " ~" H 4400 3250 50  0001 C CNN
+	1    4250 3300
+	1    0    0    -1  
+$EndComp
+NoConn ~ 4150 3700
+Wire Wire Line
+	4750 2750 4750 3100
+Wire Wire Line
+	4750 3100 4550 3100
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 6014535A
+P 4750 2750
+AR Path="/6014535A" Ref="#FLG?"  Part="1" 
+AR Path="/600FF0C1/6014535A" Ref="#FLG?"  Part="1" 
+AR Path="/60142645/6014535A" Ref="#FLG011"  Part="1" 
+F 0 "#FLG011" H 4750 2825 50  0001 C CNN
+F 1 "PWR_FLAG" H 4750 2923 50  0000 C CNN
+F 2 "" H 4750 2750 50  0001 C CNN
+F 3 "~" H 4750 2750 50  0001 C CNN
+	1    4750 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 60145361
+P 4250 3750
+AR Path="/60145361" Ref="#FLG?"  Part="1" 
+AR Path="/600FF0C1/60145361" Ref="#FLG?"  Part="1" 
+AR Path="/60142645/60145361" Ref="#FLG012"  Part="1" 
+F 0 "#FLG012" H 4250 3825 50  0001 C CNN
+F 1 "PWR_FLAG" H 4250 3923 50  0000 C CNN
+F 2 "" H 4250 3750 50  0001 C CNN
+F 3 "~" H 4250 3750 50  0001 C CNN
+	1    4250 3750
+	-1   0    0    1   
+$EndComp
+$Comp
+L RoboCamp:MIC1555-MU U6
+U 1 1 6014632C
+P 6000 3300
+F 0 "U6" H 6000 3725 50  0000 C CNN
+F 1 "MIC1555-MU" H 6000 3634 50  0000 C CNN
+F 2 "RoboCamp:UTDFN-10" H 6000 2850 50  0001 C CNN
+F 3 "" H 5850 3150 50  0001 C CNN
+	1    6000 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 6014B005
+P 7200 3100
+AR Path="/6014B005" Ref="R?"  Part="1" 
+AR Path="/600FF0C1/6014B005" Ref="R?"  Part="1" 
+AR Path="/60142645/6014B005" Ref="R17"  Part="1" 
+F 0 "R17" V 6993 3100 50  0000 C CNN
+F 1 "330R" V 7084 3100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 7130 3100 50  0001 C CNN
+F 3 "~" H 7200 3100 50  0001 C CNN
+	1    7200 3100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 6014B448
+P 7650 3100
+AR Path="/6014B448" Ref="D?"  Part="1" 
+AR Path="/600FF0C1/6014B448" Ref="D?"  Part="1" 
+AR Path="/60142645/6014B448" Ref="D6"  Part="1" 
+F 0 "D6" H 7643 2845 50  0000 C CNN
+F 1 "LED" H 7643 2936 50  0000 C CNN
+F 2 "LED_SMD:LED_0402_1005Metric" H 7650 3100 50  0001 C CNN
+F 3 "~" H 7650 3100 50  0001 C CNN
+	1    7650 3100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7350 3100 7500 3100
+Wire Wire Line
+	6900 3300 7150 3300
+Wire Wire Line
+	6600 3300 6450 3300
+Wire Wire Line
+	7800 3100 7800 3600
+Wire Wire Line
+	7800 3600 7150 3600
+Wire Wire Line
+	7150 3600 5650 3600
+Wire Wire Line
+	5650 3600 5650 3500
+Connection ~ 7150 3600
+Wire Wire Line
+	5650 3200 5550 3200
+Wire Wire Line
+	5550 3200 5550 3100
+Wire Wire Line
+	5550 3100 5650 3100
+Wire Wire Line
+	5650 3350 5550 3350
+Wire Wire Line
+	5550 3350 5550 3750
+Wire Wire Line
+	5550 3750 6450 3750
+Wire Wire Line
+	6450 3750 6450 3300
+Connection ~ 6450 3300
+Wire Wire Line
+	6450 3300 6350 3300
+Wire Wire Line
+	4750 3100 5550 3100
+Connection ~ 4750 3100
+Connection ~ 5550 3100
+Wire Wire Line
+	5550 3750 4250 3750
+Connection ~ 5550 3750
+Connection ~ 4250 3750
+Wire Wire Line
+	4250 3750 4250 3700
+Wire Wire Line
+	6350 3100 7050 3100
+Text Label 5000 3100 0    50   ~ 0
+VCC
+Text Label 4950 3750 0    50   ~ 0
+GND
+$EndSCHEMATC
