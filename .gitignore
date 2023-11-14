@@ -169,3 +169,4 @@ node_modules/
 *.zip
 *.zip.hash
 .vscode
+.DS_Store
