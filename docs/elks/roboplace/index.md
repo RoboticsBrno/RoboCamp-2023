@@ -33,23 +33,38 @@ gpio.on("falling", 18, ()=> {
 
 
 Webovou stránku si můžete otevřít na adrese [https://roboplace.vercel.app](https://roboplace.vercel.app) 
-
 ![](assets/colors.png)
-
 ## Kód pro pc
-
-- Stáhněte si [repozitář](https://github.com/C2Coder/RoboPlace_client) 
+- Stáhněte si [repozitář](https://github.com/C2Coder/RoboPlace) 
     - Buď pomcí zipu a poté ho extrahujte
-    - Nebo pomocí `git clone https://github.com/C2Coder/RoboPlace_client`
+    - Nebo pomocí 
+    ```
+    git clone https://github.com/C2Coder/RoboPlace
+    ```
 
 - Otevřete si složku v terminálu
-
 - Nainstalujte potřebné python moduly pomocí příkazu `pip install -r requirements.txt`
 
 - Spusťte aplikaci
+    ```
+    python3 ./RoboPlace.py <port> <Jaculus nebo Normal> <no-post (optional)>
+    ```
     - Pokud máte ELKS, nebo jiné zařízení s jaculem
-    `python3 ./RoboPlaceJaculus.py <port>` a port na kterém ho máte připojený.
+    ```
+    python3 ./RoboPlace.py <port> Jaculus
+    ```
     - Pokud máte něco jiného, např. micro:bit
-    `python3 ./RoboPlaceNormal.py <port>`
+    ```
+    python3 ./RoboPlace.py <port> Normal
+    ```
+    - Pokud nechcete aby se data posílaly na server
+    ```
+    python3 ./RoboPlace.py <port> Jaculus no-post
+    ```
+    - Pokud nechcete mít obrazovku, jenom aby to v pozadí běžělo (headless)
+    ```
+    python3 ./Headless.py <port> Jaculus
+    ```
+
 - Pokud něco nefunguje, pingněte mě na discordu (@C2Coder)
 - Pokud někdo chce vidět kód pro webovku [github](https://github.com/C2Coder/RoboPlace_server_vercel)
